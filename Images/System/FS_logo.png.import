@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl8rpxm8vf43s"
-path="res://.godot/imported/DOMASHNIY JAM Scaled.png-53d40ac47c5b6dff475b7e41c9364077.ctex"
+uid="uid://qhasignudkqd"
+path="res://.godot/imported/FS_logo.png-1147cc4141fc6a2b37b03fa4a3cbe424.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/System/DOMASHNIY JAM Scaled.png"
-dest_files=["res://.godot/imported/DOMASHNIY JAM Scaled.png-53d40ac47c5b6dff475b7e41c9364077.ctex"]
+source_file="res://Images/System/FS_logo.png"
+dest_files=["res://.godot/imported/FS_logo.png-1147cc4141fc6a2b37b03fa4a3cbe424.ctex"]
 
 [params]
 
