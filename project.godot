@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="JAM_DomashniyJamTwo"
+config/description="By FruitSoil"
+config/version="0.0.0"
+config/tags=PackedStringArray("gj", "project")
+run/main_scene="uid://7hqe3co57xpq"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/use_filter=false
+boot_splash/image="uid://cl8rpxm8vf43s"
+config/icon="uid://cl8rpxm8vf43s"
+
+[file_customization]
+
+folder_colors={
+"res://Additional/": "orange",
+"res://Images/": "blue",
+"res://Images/System/": "gray",
+"res://ScenesAndObjects/": "red",
+"res://ScenesAndObjects/Objects/": "yellow",
+"res://ScenesAndObjects/Scenes/": "orange",
+"res://Sound/": "green",
+"res://Sound/Music/": "purple"
+}
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.20460728, 0.19673476, 0.22455567, 1)
