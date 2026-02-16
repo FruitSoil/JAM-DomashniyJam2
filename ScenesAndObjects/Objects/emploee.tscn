@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://drsst0konkrmu"]
+
+[ext_resource type="Texture2D" uid="uid://bjdcahwc2kqfj" path="res://Images/Point_32.png" id="1_1knx4"]
+[ext_resource type="Script" uid="uid://cpnaucwrylqn5" path="res://emploee.gd" id="1_isxy6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_isxy6"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnjdn"]
+radius = 1024.002
+
+[node name="Emploee" type="CharacterBody2D" unique_id=2139048804]
+script = ExtResource("1_isxy6")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1865535816]
+shape = SubResource("CircleShape2D_isxy6")
+debug_color = Color(0.9607843, 0, 0.5058824, 0)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1047820146]
+path_desired_distance = 10.0
+simplify_path = true
+simplify_epsilon = 0.792
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1453539292]
+modulate = Color(0.28235295, 1, 1, 1)
+texture_filter = 1
+texture = ExtResource("1_1knx4")
+
+[node name="Timer" type="Timer" parent="." unique_id=1286331404]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="ray_casts" type="Node2D" parent="." unique_id=1606573871]
+
+[node name="RayCast2D" type="RayCast2D" parent="ray_casts" unique_id=2073743981]
+target_position = Vector2(100, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="Points_zone" type="Area2D" parent="." unique_id=1471251124]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Points_zone" unique_id=1575028637]
+shape = SubResource("CircleShape2D_tnjdn")
+debug_color = Color(0.84675103, 0.37603706, 0, 0)
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Points_zone" to="." method="_on_points_zone_area_entered"]
+[connection signal="area_exited" from="Points_zone" to="." method="_on_points_zone_area_exited"]
