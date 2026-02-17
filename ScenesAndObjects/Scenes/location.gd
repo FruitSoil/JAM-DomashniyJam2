@@ -1,9 +1,11 @@
 extends Node2D
 
-func _ready() -> void:
-	pass # Replace with function body.
-
+@onready var target = $Player
 
 func _process(delta: float) -> void:
-	$Camera2D.global_position.x = lerpf($Camera2D.global_position.x,$Player.global_position.x, 0.01)
-	$Camera2D.global_position.y = lerpf($Camera2D.global_position.y,$Player.global_position.y, 0.01)
+	if Input.is_action_pressed("targ_en"):
+		target = $Enemy_1
+	else:
+		target = $Player
+	$Camera2D.global_position.x = lerpf($Camera2D.global_position.x,target.global_position.x, 0.03)
+	$Camera2D.global_position.y = lerpf($Camera2D.global_position.y,target.global_position.y, 0.03)

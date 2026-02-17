@@ -18,11 +18,13 @@ func object_action(given_key: String):
 			$PointLight2D.color = Color(0.0, 1.0, 0.0, 1.0)
 			$LightOccluder2D.set_occluder_light_mask(0)
 			%Console.text = %Console.text + "\n" + "DOOR OPEN!"
+			%Console.lines_skipped += 1
 		else:
 			locked = true
 			$LightOccluder2D.set_occluder_light_mask(1)
 			$CollisionShape2D.disabled = false
 			$PointLight2D.color = Color(0.672, 0.001, 0.791, 1.0)
 			%Console.text = %Console.text + "\n" + "DOOR CLOSE!"
+			%Console.lines_skipped += 1
 		print("new bake")
 		$"..".bake_navigation_polygon()

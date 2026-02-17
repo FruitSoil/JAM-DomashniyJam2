@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 		text = text.substr(0, text.length() - 1)
 		if text == "flash":
 			var twm = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
-			twm.tween_property($"../../../../CanvasModulate","color",Color(0.11, 0.141, 0.106, 1.0),1).from(Color(2.313, 2.313, 2.313, 1.0))
+			twm.tween_property($"../../../../CanvasModulate","color",Color("110108"),4).from(Color("005143"))
 			blink()
 		for i in keys:
 			if i == text:
@@ -37,6 +37,7 @@ func _process(delta: float) -> void:
 			var twp = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 			twp.tween_property($"..","position",Vector2(833,210), 1).from(Vector2(833.0,1000))
 			radio = true
+			$".".grab_focus()
 
 
 func blink():

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var agent = $Navi as NavigationAgent2D
-const Speed = 100.0
+const Speed = 80
 
 func _physics_process(delta: float) -> void:
 	velocity = Speed * to_local(agent.get_next_path_position()).normalized()

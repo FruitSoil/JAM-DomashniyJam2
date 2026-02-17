@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c1tc61yt2iqk7" path="res://Images/dasda.png" id="1_t0i8p"]
 [ext_resource type="Script" uid="uid://b45s0wy6sjxtk" path="res://ScenesAndObjects/Objects/wall.gd" id="1_u4w8u"]
 [ext_resource type="Texture2D" uid="uid://b58o7t5fc3g3n" path="res://Images/Light.png" id="3_3cvny"]
+[ext_resource type="FontFile" uid="uid://lvvsmmk43lqv" path="res://Additional/Fonts/Kreadon-Bold.ttf" id="4_acocj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3cvny"]
 light_mode = 2
@@ -17,13 +18,11 @@ polygon = PackedVector2Array(13, 0, 15, 0, 15, 96, 13, 96)
 size = Vector2(29, 96)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3cvny"]
+font = ExtResource("4_acocj")
 font_size = 32
 font_color = Color(0.061168246, 0.038461372, 0, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 5
-shadow_color = Color(1, 1, 1, 0.14509805)
-shadow_offset = Vector2(2.475, 1)
 
 [node name="Wall" type="StaticBody2D" unique_id=118284493 groups=["Interactable"]]
 light_mask = 2
