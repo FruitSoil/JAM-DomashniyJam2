@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cxkpnvxrmq7x1"]
+
+[ext_resource type="Script" uid="uid://0cc02uj15hyc" path="res://ScenesAndObjects/Objects/enemy_1.gd" id="1_e7ye2"]
+[ext_resource type="Texture2D" uid="uid://bjdcahwc2kqfj" path="res://Images/Point_32.png" id="1_wogcl"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wogcl"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ylwma"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e7ye2"]
+light_mode = 2
+
+[node name="Enemy_1" type="CharacterBody2D" unique_id=1181082509]
+material = SubResource("CanvasItemMaterial_wogcl")
+script = ExtResource("1_e7ye2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135082532]
+shape = SubResource("CircleShape2D_ylwma")
+debug_color = Color(0.9607843, 0, 0.52156866, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1781430887]
+modulate = Color(18.892157, 0, 0, 1)
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_e7ye2")
+texture = ExtResource("1_wogcl")
+
+[node name="Navi" type="NavigationAgent2D" parent="." unique_id=1323648777]
+path_desired_distance = 10.0
+target_desired_distance = 30.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1239890873]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

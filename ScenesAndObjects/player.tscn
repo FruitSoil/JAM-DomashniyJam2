@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cjal2omhwviyf"]
 
-[ext_resource type="Script" uid="uid://2qn5x8lih12" path="res://ScenesAndObjects/Scenes/player.gd" id="1_j6iwr"]
+[ext_resource type="Script" uid="uid://2qn5x8lih12" path="res://ScenesAndObjects/player.gd" id="1_j6iwr"]
 [ext_resource type="Texture2D" uid="uid://bjdcahwc2kqfj" path="res://Images/Point_32.png" id="2_bmv4b"]
-[ext_resource type="Texture2D" uid="uid://b58o7t5fc3g3n" path="res://Images/Light.png" id="3_kxsr8"]
+[ext_resource type="Texture2D" uid="uid://bf23ccuk0cjsm" path="res://Images/Z.png" id="3_j02pm"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kxsr8"]
 light_mode = 1
@@ -28,11 +28,12 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=193525142]
 light_mask = 2
 visibility_layer = 2
+color = Color(0.7294118, 1, 0.7607843, 1)
 energy = 0.3
 blend_mode = 2
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_filter_smooth = 34.6
 shadow_item_cull_mask = 3
-texture = ExtResource("3_kxsr8")
+texture = ExtResource("3_j02pm")
 texture_scale = 6.54

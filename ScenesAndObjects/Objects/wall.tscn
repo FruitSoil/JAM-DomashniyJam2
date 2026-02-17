@@ -10,11 +10,20 @@ light_mode = 2
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_acocj"]
 light_mode = 2
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3cvny"]
+polygon = PackedVector2Array(13, 0, 15, 0, 15, 96, 13, 96)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4w8u"]
 size = Vector2(29, 96)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ssoa3"]
-light_mode = 2
+[sub_resource type="LabelSettings" id="LabelSettings_3cvny"]
+font_size = 32
+font_color = Color(0.061168246, 0.038461372, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(1, 1, 1, 0.14509805)
+shadow_offset = Vector2(2.475, 1)
 
 [node name="Wall" type="StaticBody2D" unique_id=118284493 groups=["Interactable"]]
 light_mask = 2
@@ -24,13 +33,23 @@ collision_layer = 9
 collision_mask = 9
 script = ExtResource("1_u4w8u")
 
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1139143770]
+position = Vector2(14, 49)
+scale = Vector2(2.21875, 2.3094795)
+color = Color(1, 0, 0, 1)
+energy = 0.22
+texture = ExtResource("3_3cvny")
+
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1469943576]
 light_mask = 2
-visibility_layer = 2
+visibility_layer = 3
 material = SubResource("CanvasItemMaterial_acocj")
 scale = Vector2(0.2265625, 0.75)
 texture = ExtResource("1_t0i8p")
 centered = false
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1934913745]
+occluder = SubResource("OccluderPolygon2D_3cvny")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=948284112]
 light_mask = 2
@@ -47,9 +66,10 @@ material = SubResource("CanvasItemMaterial_acocj")
 offset_right = 95.95918
 offset_bottom = 45.0
 rotation = 1.5707964
-theme_override_colors/font_color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "D900"
+label_settings = SubResource("LabelSettings_3cvny")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -62,18 +82,9 @@ offset_top = 96.0
 offset_right = 124.95918
 offset_bottom = 141.0
 rotation = 4.712389
-theme_override_colors/font_color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "D900"
+label_settings = SubResource("LabelSettings_3cvny")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1139143770]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_ssoa3")
-position = Vector2(14, 49)
-scale = Vector2(1.345, 1.4)
-color = Color(1, 0, 0, 1)
-energy = 0.22
-texture = ExtResource("3_3cvny")

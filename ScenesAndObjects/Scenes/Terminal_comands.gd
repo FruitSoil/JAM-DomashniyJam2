@@ -10,8 +10,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("enter"):
+		$"../Console".lines_skipped += 1
 		text = text.substr(0, text.length() - 1)
-		if text == "flash" or text == "Flash":
+		if text == "flash":
 			var twm = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 			twm.tween_property($"../../../../CanvasModulate","color",Color(0.11, 0.141, 0.106, 1.0),1).from(Color(2.313, 2.313, 2.313, 1.0))
 			blink()
@@ -19,6 +20,7 @@ func _process(delta: float) -> void:
 			if i == text:
 				get_tree().call_group("Interactable", "object_action", i)
 		print(text)
+		%Console.text = %Console.text + "\n" + str(text)
 		text = str("")
 
 
