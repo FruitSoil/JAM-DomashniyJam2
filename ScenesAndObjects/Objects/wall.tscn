@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://b45s0wy6sjxtk" path="res://ScenesAndObjects/Objects/wall.gd" id="1_u4w8u"]
 [ext_resource type="Texture2D" uid="uid://b58o7t5fc3g3n" path="res://Images/Light.png" id="3_3cvny"]
 [ext_resource type="FontFile" uid="uid://lvvsmmk43lqv" path="res://Additional/Fonts/Kreadon-Bold.ttf" id="4_acocj"]
+[ext_resource type="AudioStream" uid="uid://bmqkugi7ejhp5" path="res://Sound/SFX/Door_open.mp3" id="5_0o131"]
+[ext_resource type="AudioStream" uid="uid://chw3xd2tiknti" path="res://Sound/SFX/Door_close.mp3" id="6_fhfed"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3cvny"]
 light_mode = 2
@@ -20,7 +22,7 @@ size = Vector2(29, 96)
 [sub_resource type="LabelSettings" id="LabelSettings_3cvny"]
 font = ExtResource("4_acocj")
 font_size = 32
-font_color = Color(0.061168246, 0.038461372, 0, 1)
+font_color = Color(0, 0, 0, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
@@ -87,3 +89,14 @@ text = "D900"
 label_settings = SubResource("LabelSettings_3cvny")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Open" type="AudioStreamPlayer2D" parent="." unique_id=1594080012]
+stream = ExtResource("5_0o131")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Close" type="AudioStreamPlayer2D" parent="." unique_id=1020592056]
+stream = ExtResource("6_fhfed")
+volume_db = -5.0
+pitch_scale = 0.9
+bus = &"SFX"

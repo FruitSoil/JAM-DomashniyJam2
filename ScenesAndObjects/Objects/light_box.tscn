@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://ciud1b205fdys"]
+
+[ext_resource type="Texture2D" uid="uid://c1tc61yt2iqk7" path="res://Images/dasda.png" id="1_5of1m"]
+[ext_resource type="Script" uid="uid://byqbhxlj6hxgo" path="res://ScenesAndObjects/Objects/light_box.gd" id="1_cn3ht"]
+[ext_resource type="Texture2D" uid="uid://djhgvvyd4beoo" path="res://Images/Darkler.png" id="2_bg4ak"]
+[ext_resource type="Texture2D" uid="uid://bf23ccuk0cjsm" path="res://Images/Z.png" id="4_hx2pg"]
+[ext_resource type="Texture2D" uid="uid://bjdcahwc2kqfj" path="res://Images/Point_32.png" id="4_yysen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg4ak"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn3ht"]
+size = Vector2(64, 128)
+
+[sub_resource type="Curve" id="Curve_yysen"]
+_data = [Vector2(0, 0), 0.0, 5.403374, 0, 0, Vector2(0.2324723, 0.85046005), 1.4603719, 1.4603719, 0, 0, Vector2(0.808118, 1), -1.5240293, -1.5240293, 0, 0, Vector2(1, 0), -4.9499435, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_yrhen"]
+offsets = PackedFloat32Array(0, 0.5469388, 1)
+colors = PackedColorArray(0.1254902, 0.1254902, 0.1254902, 1, 1, 1, 1, 0.9076111, 1, 1, 1, 0.5647059)
+
+[node name="Light_box" type="StaticBody2D" unique_id=691331184]
+script = ExtResource("1_cn3ht")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=864726709]
+position = Vector2(16, 32)
+shape = SubResource("RectangleShape2D_bg4ak")
+debug_color = Color(0.9843137, 0, 0.34117648, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=821623080]
+position = Vector2(16, 32)
+scale = Vector2(0.25, 0.5)
+texture = ExtResource("2_bg4ak")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1485742761]
+position = Vector2(16, 32)
+scale = Vector2(0.25, 0.5)
+texture = ExtResource("1_5of1m")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2090109614]
+
+[node name="Collision" type="CollisionShape2D" parent="Area2D" unique_id=1930959035]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_cn3ht")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=258750834]
+wait_time = 0.5
+autostart = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=845585942]
+modulate = Color(0.17641911, 0.17641908, 0.17641908, 1)
+position = Vector2(23.75, 14.5)
+scale = Vector2(0.453125, 0.46874997)
+texture = ExtResource("4_yysen")
+
+[node name="Light" type="PointLight2D" parent="." unique_id=1119905009]
+position = Vector2(23.5, 14.5)
+scale = Vector2(0.17000002, 0.16999999)
+color = Color(0.6666667, 0.003921569, 1, 1)
+energy = 2.41
+texture = ExtResource("4_hx2pg")
+
+[node name="Light2" type="PointLight2D" parent="." unique_id=178308793]
+position = Vector2(23.5, 14.5)
+scale = Vector2(0.17000002, 0.16999999)
+color = Color(0.6666667, 0.003921569, 1, 1)
+energy = 0.3
+texture = ExtResource("4_hx2pg")
+texture_scale = 4.64
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1273865062]
+position = Vector2(15, 54)
+emitting = false
+lifetime = 1.5
+emission_shape = 1
+emission_sphere_radius = 5.51
+gravity = Vector2(0, -100)
+angular_velocity_min = -141.97
+angular_velocity_max = 162.25
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_yysen")
+color = Color(0.28235295, 0.28235295, 0.28235295, 1)
+color_ramp = SubResource("Gradient_yrhen")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://cjal2omhwviyf"]
+
+[ext_resource type="Script" uid="uid://2qn5x8lih12" path="res://ScenesAndObjects/Objects/player.gd" id="1_j6iwr"]
+[ext_resource type="Texture2D" uid="uid://dp5bxvgmsvsxa" path="res://Images/Point_16.png" id="2_5u8lh"]
+[ext_resource type="Texture2D" uid="uid://bjdcahwc2kqfj" path="res://Images/Point_32.png" id="2_bmv4b"]
+[ext_resource type="Texture2D" uid="uid://bf23ccuk0cjsm" path="res://Images/Z.png" id="3_j02pm"]
+[ext_resource type="AudioStream" uid="uid://wjquoqukwgj3" path="res://Sound/SFX/Two steps.mp3" id="4_vpjc8"]
+[ext_resource type="AudioStream" uid="uid://c5f06hcfbtq4k" path="res://Sound/Music/Ambient_1.ogg" id="5_04mcm"]
+[ext_resource type="AudioStream" uid="uid://d4drjmprqbumy" path="res://Sound/SFX/PickUp.wav" id="7_uf0dm"]
+[ext_resource type="AudioStream" uid="uid://csf0bp6yp5ywm" path="res://Sound/SFX/Lights.mp3" id="8_bdr74"]
+
+[sub_resource type="Gradient" id="Gradient_04mcm"]
+offsets = PackedFloat32Array(0, 0.60330576, 0.9793388)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_5u8lh"]
+offsets = PackedFloat32Array(0, 0.5041322, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1.3262677, 0, 0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kxsr8"]
+light_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kxsr8"]
+radius = 13.0
+
+[sub_resource type="Curve" id="Curve_bdr74"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.9664179, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_su6f6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.70149255, 0.61586314), -1.5803525, -1.5803525, 0, 0, Vector2(1, 0), -0.08540878, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_11x46"]
+offsets = PackedFloat32Array(0, 0.5, 0.9793388)
+colors = PackedColorArray(17.486006, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Player" type="CharacterBody2D" unique_id=121205512]
+script = ExtResource("1_j6iwr")
+
+[node name="Blood" type="CPUParticles2D" parent="." unique_id=1717832040]
+emitting = false
+texture = ExtResource("2_5u8lh")
+lifetime = 2.74
+explosiveness = 0.58
+emission_shape = 1
+emission_sphere_radius = 10.08
+gravity = Vector2(0, 0)
+angle_min = -704.7
+angle_max = 720.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color = Color(0.9999997, 0.124572285, 0.086494304, 1)
+color_ramp = SubResource("Gradient_04mcm")
+color_initial_ramp = SubResource("Gradient_5u8lh")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1197300310]
+modulate = Color(0.16078432, 1, 0.2, 1)
+light_mask = 4
+visibility_layer = 4
+material = SubResource("CanvasItemMaterial_kxsr8")
+scale = Vector2(0.80000037, 0.80000037)
+texture = ExtResource("2_bmv4b")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=26678416]
+shape = SubResource("CircleShape2D_kxsr8")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=193525142]
+light_mask = 2
+visibility_layer = 2
+color = Color(0.90771055, 1, 0.7960477, 1)
+energy = 0.13
+blend_mode = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter_smooth = 34.6
+shadow_item_cull_mask = 3
+texture = ExtResource("3_j02pm")
+texture_scale = 6.54
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1350530999]
+current = true
+
+[node name="Steps" type="AudioStreamPlayer2D" parent="." unique_id=683022428]
+stream = ExtResource("4_vpjc8")
+volume_db = -5.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1956918352]
+wait_time = 0.3
+one_shot = true
+
+[node name="Ambient" type="AudioStreamPlayer2D" parent="." unique_id=6737327]
+stream = ExtResource("5_04mcm")
+volume_db = 2.829
+autoplay = true
+bus = &"SFX"
+
+[node name="PickUp" type="AudioStreamPlayer2D" parent="." unique_id=1508196280]
+stream = ExtResource("7_uf0dm")
+volume_db = -10.0
+
+[node name="lights" type="AudioStreamPlayer2D" parent="." unique_id=610621541]
+stream = ExtResource("8_bdr74")
+volume_db = 10.0
+max_polyphony = 2
+bus = &"SFX"
+
+[node name="blood_fast" type="CPUParticles2D" parent="." unique_id=1431930598]
+emitting = false
+lifetime = 0.3
+spread = 15.64
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.93
+initial_velocity_max = 411.34
+orbit_velocity_min = -0.3
+orbit_velocity_max = 0.3
+damping_min = 100.0
+damping_max = 100.0
+damping_curve = SubResource("Curve_bdr74")
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_su6f6")
+color = Color(0.7262233, 3.4172833e-06, 5.7756904e-07, 1)
+color_ramp = SubResource("Gradient_11x46")
+
+[node name="damage" type="CPUParticles2D" parent="." unique_id=176733251]
+emitting = false
+amount = 16
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.92
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 248.23
+initial_velocity_max = 534.07
+tangential_accel_min = -29.79
+tangential_accel_max = 48.23
+damping_min = 100.0
+damping_max = 100.0
+damping_curve = SubResource("Curve_bdr74")
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 2.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_su6f6")
+color = Color(0.7262233, 3.4172833e-06, 5.7756904e-07, 1)
+color_ramp = SubResource("Gradient_11x46")

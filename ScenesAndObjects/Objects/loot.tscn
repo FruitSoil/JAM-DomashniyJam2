@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://tis77cqj8odv"]
+
+[ext_resource type="Texture2D" uid="uid://bscqure1b5de6" path="res://Images/View.png" id="1_74e6p"]
+[ext_resource type="Script" uid="uid://n0b7gpvdtumg" path="res://ScenesAndObjects/Objects/loot.gd" id="1_hmiyj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hmiyj"]
+radius = 32.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hmiyj"]
+light_mode = 2
+
+[node name="Loot" type="Area2D" unique_id=486356530]
+script = ExtResource("1_hmiyj")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1521972513]
+shape = SubResource("CircleShape2D_hmiyj")
+debug_color = Color(0.5137255, 0.5764706, 0, 0)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1558530759]
+modulate = Color(1, 1, 0, 1)
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_hmiyj")
+scale = Vector2(1.3333334, 1.3333334)
+texture = ExtResource("1_74e6p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
