@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ictam2nrqiag" path="res://ScenesAndObjects/Objects/wall.tscn" id="5_5erar"]
 [ext_resource type="PackedScene" uid="uid://cxkpnvxrmq7x1" path="res://ScenesAndObjects/Objects/enemy_1.tscn" id="5_qo3pl"]
 [ext_resource type="PackedScene" uid="uid://cjal2omhwviyf" path="res://ScenesAndObjects/Objects/player.tscn" id="6_5erar"]
+[ext_resource type="Texture2D" uid="uid://bjdcahwc2kqfj" path="res://Images/Point_32.png" id="6_ebdv6"]
 [ext_resource type="Script" uid="uid://om283rv762r0" path="res://ScenesAndObjects/Scenes/Terminal_comands.gd" id="6_nevhj"]
 [ext_resource type="Script" uid="uid://bsdypxrsfgjcp" path="res://ScenesAndObjects/Scenes/loot.gd" id="7_168yq"]
 [ext_resource type="Texture2D" uid="uid://djhgvvyd4beoo" path="res://Images/Darkler.png" id="8_qo3pl"]
@@ -15,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://lvvsmmk43lqv" path="res://Additional/Fonts/Kreadon-Bold.ttf" id="13_wsoec"]
 [ext_resource type="PackedScene" uid="uid://ciud1b205fdys" path="res://ScenesAndObjects/Objects/light_box.tscn" id="14_r74ar"]
 [ext_resource type="Script" uid="uid://d3maavmlrcbw8" path="res://ScenesAndObjects/Scenes/light.gd" id="15_ud48r"]
+[ext_resource type="AudioStream" uid="uid://csdubp5p1aigh" path="res://Sound/SFX/Click.mp3" id="17_1hb73"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qo3pl"]
 texture = ExtResource("1_m385k")
@@ -73,6 +75,20 @@ source_geometry_mode = 1
 source_geometry_group_name = &"navigation"
 agent_radius = 15.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1hb73"]
+light_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wsoec"]
+radius = 64.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r74ar"]
+light_mode = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_ud48r"]
+font = ExtResource("13_wsoec")
+font_size = 55
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Environment" id="Environment_bpodj"]
 background_mode = 3
 glow_enabled = true
@@ -120,17 +136,6 @@ font_size = 14
 font_color = Color(0, 0.43584347, 5.7756904e-07, 1)
 outline_size = 2
 outline_color = Color(0, 0.19176072, 0, 1)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_wsoec"]
-radius = 64.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r74ar"]
-light_mode = 2
-
-[sub_resource type="LabelSettings" id="LabelSettings_ud48r"]
-font = ExtResource("13_wsoec")
-font_size = 55
-font_color = Color(0, 0, 0, 1)
 
 [node name="Location" type="Node2D" unique_id=1441829879]
 script = ExtResource("1_mri2y")
@@ -255,11 +260,222 @@ rotation = -1.5707964
 [node name="Player" parent="." unique_id=121205512 instance=ExtResource("6_5erar")]
 position = Vector2(96, 416)
 
+[node name="Player_sprite" type="Sprite2D" parent="." unique_id=939193897]
+modulate = Color(0, 1, 0, 1)
+light_mask = 4
+visibility_layer = 4
+material = SubResource("CanvasItemMaterial_1hb73")
+scale = Vector2(0.80000037, 0.80000037)
+texture = ExtResource("6_ebdv6")
+
+[node name="Timer" type="Timer" parent="Player_sprite" unique_id=2070383111]
+wait_time = 0.1
+autostart = true
+
 [node name="Enemy_1" parent="." unique_id=1181082509 instance=ExtResource("5_qo3pl")]
 position = Vector2(2404, 1296)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1964609637]
 zoom = Vector2(1.5, 1.5)
+
+[node name="Lights" type="Node2D" parent="." unique_id=968754345]
+z_index = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights" unique_id=534134171 groups=["togglable_light"]]
+top_level = true
+position = Vector2(2327, 1176)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 8.8
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lights" unique_id=910753287 groups=["togglable_light"]]
+top_level = true
+position = Vector2(768, 416)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 8.8
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Lights" unique_id=1498522877 groups=["togglable_light"]]
+top_level = true
+position = Vector2(2304, 864)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 4.04
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D5" type="PointLight2D" parent="Lights" unique_id=2104057053 groups=["togglable_light"]]
+top_level = true
+position = Vector2(2071, 472)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 8.8
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D6" type="PointLight2D" parent="Lights" unique_id=8365806 groups=["togglable_light"]]
+top_level = true
+position = Vector2(1591, 120)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 4.72
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D7" type="PointLight2D" parent="Lights" unique_id=1132874051 groups=["togglable_light"]]
+top_level = true
+position = Vector2(1719, 1624)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 7.1
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D8" type="PointLight2D" parent="Lights" unique_id=1157114267 groups=["togglable_light"]]
+top_level = true
+position = Vector2(1079, 1144)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 7.1
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D10" type="PointLight2D" parent="Lights" unique_id=179348601 groups=["togglable_light"]]
+top_level = true
+position = Vector2(768, 544)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 8.8
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D11" type="PointLight2D" parent="Lights" unique_id=1525611085 groups=["togglable_light"]]
+top_level = true
+position = Vector2(448, 1007)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 9.13
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D12" type="PointLight2D" parent="Lights" unique_id=234827781 groups=["togglable_light"]]
+top_level = true
+position = Vector2(1408, 1376)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 4.41
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D13" type="PointLight2D" parent="Lights" unique_id=444980306 groups=["togglable_light"]]
+top_level = true
+position = Vector2(1632, 1184)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 4.41
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D14" type="PointLight2D" parent="Lights" unique_id=371499793 groups=["togglable_light"]]
+top_level = true
+position = Vector2(1792, 928)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 6.0
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D15" type="PointLight2D" parent="Lights" unique_id=532897568 groups=["togglable_light"]]
+top_level = true
+position = Vector2(2656, 128)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 11.75
+script = ExtResource("15_ud48r")
+
+[node name="PointLight2D16" type="PointLight2D" parent="Lights" unique_id=1882906596 groups=["togglable_light"]]
+top_level = true
+position = Vector2(2656, 1024)
+rotation = -1.5707964
+color = Color(1.137263, 1.3349501, 1.5565991, 1)
+energy = 0.15
+range_z_min = -1026
+shadow_enabled = true
+shadow_color = Color(0, 0.007843138, 0.16470589, 0.10980392)
+shadow_filter_smooth = 8.1
+texture = ExtResource("12_jhsmk")
+texture_scale = 11.75
+script = ExtResource("15_ud48r")
 
 [node name="Loot" type="Node2D" parent="." unique_id=661526624]
 script = ExtResource("7_168yq")
@@ -357,146 +573,57 @@ position = Vector2(2888, 737)
 [node name="LootPoint31" type="Node2D" parent="Loot" unique_id=1970177446]
 position = Vector2(1307, 1900)
 
-[node name="Lights" type="Node2D" parent="." unique_id=968754345]
-
-[node name="PointLight2D" type="PointLight2D" parent="Lights" unique_id=534134171 groups=["togglable_light"]]
-visible = false
-top_level = true
-position = Vector2(2327, 1176)
-rotation = -1.5707964
-color = Color(0.72647816, 0.8529485, 1, 1)
-energy = 0.3
-shadow_enabled = true
-shadow_color = Color(0, 0, 0.34901962, 0.14509805)
-texture = ExtResource("12_jhsmk")
-texture_scale = 8.8
-script = ExtResource("15_ud48r")
-
-[node name="PointLight2D2" type="PointLight2D" parent="Lights" unique_id=910753287 groups=["togglable_light"]]
-visible = false
-top_level = true
-position = Vector2(768, 416)
-rotation = -1.5707964
-color = Color(0.62255603, 0.80144304, 1, 1)
-energy = 0.3
-shadow_enabled = true
-shadow_color = Color(0, 0, 0.34901962, 0.14509805)
-texture = ExtResource("12_jhsmk")
-texture_scale = 8.8
-script = ExtResource("15_ud48r")
-
-[node name="PointLight2D3" type="PointLight2D" parent="Lights" unique_id=289661622 groups=["togglable_light"]]
-visible = false
-top_level = true
-position = Vector2(1943, -360)
-rotation = -1.5707964
-color = Color(0.72647816, 0.8529485, 1, 1)
-energy = 0.3
-shadow_enabled = true
-shadow_color = Color(0, 0, 0.34901962, 0.14509805)
-texture = ExtResource("12_jhsmk")
-texture_scale = 8.8
-script = ExtResource("15_ud48r")
-
-[node name="PointLight2D4" type="PointLight2D" parent="Lights" unique_id=1498522877 groups=["togglable_light"]]
-visible = false
-top_level = true
-position = Vector2(2304, 864)
-rotation = -1.5707964
-color = Color(0.654902, 1, 1, 1)
-energy = 0.3
-shadow_enabled = true
-shadow_color = Color(0, 0, 0.34901962, 0.14509805)
-texture = ExtResource("12_jhsmk")
-texture_scale = 4.04
-script = ExtResource("15_ud48r")
-
-[node name="PointLight2D5" type="PointLight2D" parent="Lights" unique_id=2104057053 groups=["togglable_light"]]
-visible = false
-top_level = true
-position = Vector2(2071, 472)
-rotation = -1.5707964
-color = Color(0.72647816, 0.8529485, 1, 1)
-energy = 0.3
-shadow_enabled = true
-shadow_color = Color(0.1764706, 0.15294118, 0, 0.31764707)
-texture = ExtResource("12_jhsmk")
-texture_scale = 8.8
-script = ExtResource("15_ud48r")
-
-[node name="PointLight2D6" type="PointLight2D" parent="Lights" unique_id=8365806 groups=["togglable_light"]]
-visible = false
-top_level = true
-position = Vector2(1591, 120)
-rotation = -1.5707964
-color = Color(1, 1, 0.5882353, 1)
-energy = 0.3
-shadow_enabled = true
-shadow_color = Color(0.1764706, 0.15294118, 0, 0.31764707)
-texture = ExtResource("12_jhsmk")
-texture_scale = 4.72
-script = ExtResource("15_ud48r")
-
-[node name="PointLight2D7" type="PointLight2D" parent="Lights" unique_id=1132874051 groups=["togglable_light"]]
-visible = false
-top_level = true
-position = Vector2(1719, 1624)
-rotation = -1.5707964
-color = Color(1, 1, 0.5882353, 1)
-energy = 0.3
-shadow_enabled = true
-shadow_color = Color(0.1764706, 0.15294118, 0, 0.31764707)
-texture = ExtResource("12_jhsmk")
-texture_scale = 7.1
-script = ExtResource("15_ud48r")
-
-[node name="PointLight2D8" type="PointLight2D" parent="Lights" unique_id=1157114267 groups=["togglable_light"]]
-visible = false
-top_level = true
-position = Vector2(1079, 1144)
-rotation = -1.5707964
-color = Color(1, 1, 0.5882353, 1)
-energy = 0.3
-shadow_enabled = true
-shadow_color = Color(0.1764706, 0.15294118, 0, 0.31764707)
-texture = ExtResource("12_jhsmk")
-texture_scale = 7.1
-script = ExtResource("15_ud48r")
-
-[node name="PointLight2D9" type="PointLight2D" parent="Lights" unique_id=847907880 groups=["togglable_light"]]
-visible = false
-top_level = true
-position = Vector2(919, -72)
-rotation = -1.5707964
-color = Color(1, 1, 0.5882353, 1)
-energy = 0.2
-shadow_enabled = true
-texture = ExtResource("12_jhsmk")
-texture_scale = 13.9
-script = ExtResource("15_ud48r")
-
-[node name="PointLight2D10" type="PointLight2D" parent="Lights" unique_id=179348601 groups=["togglable_light"]]
-visible = false
-top_level = true
-position = Vector2(768, 544)
-rotation = -1.5707964
-color = Color(0.72647816, 0.8529485, 1, 1)
-energy = 0.3
-shadow_enabled = true
-shadow_color = Color(0, 0, 0.34901962, 0.14509805)
-texture = ExtResource("12_jhsmk")
-texture_scale = 8.8
-script = ExtResource("15_ud48r")
-
 [node name="Objects" type="Node2D" parent="." unique_id=547398986]
 
-[node name="Light_box" parent="Objects" unique_id=477774629 instance=ExtResource("14_r74ar")]
+[node name="Light_box" parent="Objects" unique_id=477774629 groups=["togglable_light"] instance=ExtResource("14_r74ar")]
 position = Vector2(832, 544)
 rotation = -3.1415925
 
-[node name="Light_box2" parent="Objects" unique_id=691331184 instance=ExtResource("14_r74ar")]
+[node name="Light_box2" parent="Objects" unique_id=691331184 groups=["togglable_light"] instance=ExtResource("14_r74ar")]
 position = Vector2(736, 960)
 rotation = -3.1415925
+
+[node name="Exit" type="Area2D" parent="." unique_id=870887921]
+position = Vector2(0, 416)
+
+[node name="Collision" type="CollisionShape2D" parent="Exit" unique_id=1594016404]
+shape = SubResource("CircleShape2D_wsoec")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Exit" unique_id=870714728 groups=["togglable_light"]]
+position = Vector2(32, 0)
+color = Color(1, 1, 0, 1)
+energy = 0.46
+shadow_enabled = true
+texture = ExtResource("12_jhsmk")
+texture_scale = 13.87
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D2" type="PointLight2D" parent="Exit" unique_id=22484963]
+position = Vector2(4, 0)
+color = Color(1, 1, 0.73333335, 1)
+energy = 0.67
+shadow_enabled = true
+texture = ExtResource("12_jhsmk")
+texture_scale = 2.02
+metadata/_edit_lock_ = true
+
+[node name="Number" type="Label" parent="Exit" unique_id=898279517]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_r74ar")
+offset_left = 12.0
+offset_top = 64.0
+offset_right = 135.0
+offset_bottom = 126.0
+rotation = -1.5707964
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "EXIT"
+label_settings = SubResource("LabelSettings_ud48r")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=930546847]
 environment = SubResource("Environment_bpodj")
@@ -577,7 +704,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=1266775902]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -664,9 +790,9 @@ offset_top = 7.0
 offset_right = 322.0
 offset_bottom = 36.0
 scale = Vector2(0.6432314, 0.609045)
-theme_override_colors/font_color = Color(0, 0.7294118, 0, 0.5058824)
+theme_override_colors/font_color = Color(1, 0.654902, 0, 0.54509807)
 theme_override_font_sizes/font_size = 32
-text = "Money: 291039"
+text = "I.N.K.s 291039"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -733,6 +859,11 @@ autowrap_mode = 1
 lines_skipped = 1
 max_lines_visible = 14
 
+[node name="Click_sound" type="AudioStreamPlayer" parent="CanvasLayer/Control/Radio" unique_id=441489536]
+stream = ExtResource("17_1hb73")
+volume_db = -20.0
+bus = &"SFX"
+
 [node name="Help_label" type="Label" parent="CanvasLayer" unique_id=198085448]
 visible = false
 anchors_preset = 7
@@ -750,54 +881,12 @@ theme_override_colors/font_color = Color(1, 0.43481088, 0.36613947, 1)
 theme_override_font_sizes/font_size = 24
 text = "Press P to exit complex"
 
-[node name="Exit" type="Area2D" parent="." unique_id=870887921]
-position = Vector2(0, 416)
-
-[node name="Collision" type="CollisionShape2D" parent="Exit" unique_id=1594016404]
-shape = SubResource("CircleShape2D_wsoec")
-metadata/_edit_lock_ = true
-
-[node name="PointLight2D" type="PointLight2D" parent="Exit" unique_id=870714728]
-position = Vector2(32, 0)
-color = Color(1, 1, 0, 1)
-energy = 0.46
-shadow_enabled = true
-shadow_color = Color(0.1764706, 0.15294118, 0, 0.3882353)
-texture = ExtResource("12_jhsmk")
-texture_scale = 13.87
-metadata/_edit_lock_ = true
-
-[node name="PointLight2D2" type="PointLight2D" parent="Exit" unique_id=22484963]
-position = Vector2(4, 0)
-color = Color(1, 1, 0.73333335, 1)
-energy = 0.67
-shadow_enabled = true
-texture = ExtResource("12_jhsmk")
-texture_scale = 2.02
-metadata/_edit_lock_ = true
-
-[node name="Number" type="Label" parent="Exit" unique_id=898279517]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_r74ar")
-offset_left = 12.0
-offset_top = 64.0
-offset_right = 135.0
-offset_bottom = 126.0
-rotation = -1.5707964
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "EXIT"
-label_settings = SubResource("LabelSettings_ud48r")
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_lock_ = true
-
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1317487507]
 color = Color(0.027307183, 0.016522612, 0.00025676025, 1)
 
+[connection signal="timeout" from="Player_sprite/Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Exit" to="Player" method="_on_exit_body_entered"]
+[connection signal="body_exited" from="Exit" to="Player" method="_on_exit_body_exited"]
 [connection signal="pressed" from="Death_UI/VBC/MC/Button" to="Death_UI" method="_on_button_pressed"]
 [connection signal="pressed" from="Death_UI/VBC/MC2/Button" to="Death_UI" method="_on_button_pressed2"]
 [connection signal="timeout" from="CanvasLayer/Control/Blink" to="CanvasLayer/Control/Radio/Terminal" method="_on_blink_timeout"]
-[connection signal="body_entered" from="Exit" to="Player" method="_on_exit_body_entered"]
-[connection signal="body_exited" from="Exit" to="Player" method="_on_exit_body_exited"]

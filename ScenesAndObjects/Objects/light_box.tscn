@@ -72,7 +72,6 @@ texture_scale = 4.64
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1273865062]
 position = Vector2(15, 54)
-emitting = false
 lifetime = 1.5
 emission_shape = 1
 emission_sphere_radius = 5.51

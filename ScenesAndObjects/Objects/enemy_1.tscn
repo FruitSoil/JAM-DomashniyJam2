@@ -16,6 +16,27 @@ light_mode = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_wogcl"]
 radius = 12.0415945
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lda5s"]
+light_mode = 2
+
+[sub_resource type="Curve" id="Curve_e7ye2"]
+_data = [Vector2(1e-05, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_ylwma"]
+_data = [Vector2(0, 0.45884), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lnhju"]
+
+[sub_resource type="Curve" id="Curve_lda5s"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_lnhju"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
 [node name="Enemy_1" type="CharacterBody2D" unique_id=1181082509]
 light_mask = 3
 visibility_layer = 3
@@ -27,7 +48,7 @@ shape = SubResource("CircleShape2D_ylwma")
 debug_color = Color(0.9607843, 0, 0.52156866, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1781430887]
-modulate = Color(18.892157, 0, 0, 1)
+modulate = Color(18.892157, 0, 0, 0.36862746)
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_e7ye2")
@@ -54,6 +75,85 @@ autoplay = true
 max_distance = 400.0
 attenuation = 2.4622893
 bus = &"SFX"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1178854095]
+z_index = 1
+material = SubResource("CanvasItemMaterial_lda5s")
+amount = 20
+lifetime = 5.0
+speed_scale = 10.0
+explosiveness = 0.02
+fixed_fps = 4
+emission_shape = 1
+emission_sphere_radius = 34.66
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 5.0
+linear_accel_max = 1.0
+scale_amount_max = 15.16
+split_scale = true
+scale_curve_x = SubResource("Curve_e7ye2")
+scale_curve_y = SubResource("Curve_ylwma")
+color = Color(0, 0, 0, 1)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=411413149]
+z_index = 1
+material = SubResource("CanvasItemMaterial_lnhju")
+amount = 10
+lifetime = 5.0
+speed_scale = 10.0
+explosiveness = 0.02
+fixed_fps = 12
+emission_shape = 1
+emission_sphere_radius = 34.66
+spread = 180.0
+gravity = Vector2(0, 0)
+linear_accel_max = 1.0
+scale_amount_min = 3.0
+scale_amount_max = 15.16
+split_scale = true
+scale_curve_x = SubResource("Curve_lda5s")
+scale_curve_y = SubResource("Curve_lnhju")
+color = Color(0, 0, 0, 1)
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="." unique_id=581689907]
+z_index = 1
+material = SubResource("CanvasItemMaterial_lda5s")
+amount = 10
+lifetime = 5.0
+speed_scale = 10.0
+explosiveness = 0.02
+fixed_fps = 12
+emission_shape = 1
+emission_sphere_radius = 34.66
+spread = 180.0
+gravity = Vector2(0, 0)
+linear_accel_max = 1.0
+angle_min = 90.0
+angle_max = 90.0
+scale_amount_min = 3.0
+scale_amount_max = 15.16
+color = Color(0, 0, 0, 1)
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="." unique_id=1741875930]
+z_index = 1
+material = SubResource("CanvasItemMaterial_lda5s")
+amount = 20
+lifetime = 5.0
+speed_scale = 10.0
+explosiveness = 0.02
+fixed_fps = 2
+emission_shape = 1
+emission_sphere_radius = 34.66
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 5.0
+linear_accel_max = 1.0
+scale_amount_max = 15.16
+split_scale = true
+scale_curve_x = SubResource("Curve_e7ye2")
+scale_curve_y = SubResource("Curve_ylwma")
+color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Damage_zone" to="." method="_on_damage_zone_body_entered"]

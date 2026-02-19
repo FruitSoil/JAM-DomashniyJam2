@@ -14,7 +14,7 @@ config/name="Domashniy Jam"
 config/description="By FruitSoil"
 config/version="0.0.0"
 config/tags=PackedStringArray("gj", "project")
-run/main_scene="uid://ceqkc0tsbs3pp"
+run/main_scene="uid://x85tqhaaor21"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0.05882353, 0, 0, 1)
 boot_splash/use_filter=false
@@ -24,6 +24,10 @@ config/icon="uid://qhasignudkqd"
 [audio]
 
 buses/default_bus_layout="uid://rlpxxbv243k2"
+
+[autoload]
+
+Global="*uid://des8a11od10pu"
 
 [display]
 

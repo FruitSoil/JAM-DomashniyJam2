@@ -1,8 +1,18 @@
 extends PointLight2D
 
+var visibled = false
 
-func switch_light():
-	if visible:
+func _ready() -> void:
+	pass
+
+func _process(delta: float) -> void:
+	if global_position.distance_to($"../../Player".global_position) > (scale.x * texture_scale * texture.get_width()) /2:
 		visible = false
 	else:
-		visible = true
+		visible = visibled
+
+func switch_light():
+	if visibled:
+		visibled = false
+	else:
+		visibled = true

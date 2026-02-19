@@ -56,7 +56,8 @@ color_ramp = SubResource("Gradient_04mcm")
 color_initial_ramp = SubResource("Gradient_5u8lh")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1197300310]
-modulate = Color(0.16078432, 1, 0.2, 1)
+visible = false
+modulate = Color(0, 1, 0, 0.19215687)
 light_mask = 4
 visibility_layer = 4
 material = SubResource("CanvasItemMaterial_kxsr8")
@@ -71,7 +72,7 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 light_mask = 2
 visibility_layer = 2
 color = Color(0.90771055, 1, 0.7960477, 1)
-energy = 0.13
+energy = 0.15
 blend_mode = 2
 range_item_cull_mask = 3
 shadow_enabled = true
@@ -87,15 +88,11 @@ current = true
 stream = ExtResource("4_vpjc8")
 volume_db = -5.0
 
-[node name="Timer" type="Timer" parent="." unique_id=1956918352]
-wait_time = 0.3
-one_shot = true
-
 [node name="Ambient" type="AudioStreamPlayer2D" parent="." unique_id=6737327]
 stream = ExtResource("5_04mcm")
 volume_db = 2.829
 autoplay = true
-bus = &"SFX"
+bus = &"Music"
 
 [node name="PickUp" type="AudioStreamPlayer2D" parent="." unique_id=1508196280]
 stream = ExtResource("7_uf0dm")
@@ -148,3 +145,12 @@ scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_su6f6")
 color = Color(0.7262233, 3.4172833e-06, 5.7756904e-07, 1)
 color_ramp = SubResource("Gradient_11x46")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1992440307]
+amount = 6
+lifetime = 0.3
+emission_shape = 1
+emission_sphere_radius = 11.89
+gravity = Vector2(0, 0)
+scale_amount_max = 11.64
+color = Color(0, 1, 0, 1)

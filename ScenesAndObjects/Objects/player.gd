@@ -1,13 +1,12 @@
 extends CharacterBody2D
 
 var Speed = 200.0
-var money: int = 0
 var hp = 3
 var exit_around : bool = false
 var Shitok_around : bool = false
 
 func _ready() -> void:
-	$"../CanvasLayer/Control/Radio/Label".text = "Money:" + str(money)
+	$"../CanvasLayer/Control/Radio/Label".text = "I.N.K.:" + str(Global.money)
 	$"../CanvasLayer/Shader".material.set("shader_parameter/aberration", 0.0)
 	$"../CanvasLayer/Shader".material.set("shader_parameter/static_noise_intensity",  0.0) 
 
@@ -17,6 +16,8 @@ func _physics_process(delta: float) -> void:
 		$Steps.play()
 	if $"../CanvasLayer/Control/Radio/Terminal".radio == false:
 		velocity = direction * Speed
+	else:
+		velocity = Vector2(0,0)
 	move_and_slide()
 
 func _process(delta: float) -> void:
@@ -24,9 +25,9 @@ func _process(delta: float) -> void:
 		get_tree().change_scene_to_file("res://ScenesAndObjects/Scenes/menu.tscn")
 
 func add_money(count: int):
-	money += count
+	Global.money += count
 	$PickUp.play()
-	$"../CanvasLayer/Control/Radio/Label".text = "Money: " + str(money)
+	$"../CanvasLayer/Control/Radio/Label".text = "I.N.K.: " + str(Global.money)
 
 func damage():
 	var twm = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
@@ -36,8 +37,8 @@ func damage():
 	$damage.emitting = true
 	$blood_fast.rotation_degrees = randf_range(0,360)
 	$Blood.emitting = true
-	$"../CanvasLayer/Shader".material.set("shader_parameter/aberration", 0.03 * (3 -hp))
-	$"../CanvasLayer/Shader".material.set("shader_parameter/static_noise_intensity", 0.05 * (3 -hp)) 
+	$"../CanvasLayer/Shader".material.set("shader_parameter/aberration", 0.02 * (3 -hp))
+	$"../CanvasLayer/Shader".material.set("shader_parameter/static_noise_intensity", 0.02 * (3 -hp)) 
 	if hp == 0:
 		death()
 
