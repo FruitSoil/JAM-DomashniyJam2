@@ -26,15 +26,17 @@ func _process(delta: float) -> void:
 			"SERVER-COOLING-ROOM":
 				$UI/TextEdit.text = "NOT AVIABLE RIGHT NOW"
 			"FLASHLIGHT":
-				$UI/TextEdit.text = "NOT AVIABLE RIGHT NOW"
+				$UI/TextEdit.text = "NOT IN STORE YET"
 			"SCANNER":
-				$UI/TextEdit.text = "NOT AVIABLE RIGHT NOW"
+				$UI/TextEdit.text = "WIP"
 			"HEADPHONES":
-				$UI/TextEdit.text = "NOT AVIABLE RIGHT NOW"
+				$UI/TextEdit.text = "NOT IN STORE YET"
 			"I.N.K.":
 				$UI/TextEdit.text = "Money, if that makes more sense"
 			"A.K.O.D.Y.":
 				$UI/TextEdit.text = "A.K.O.D.Y. - freaks"
+			"crimenoirbloodgodflexfatwinterdrunkwizardchrists.com":
+				$UI/TextEdit.text = "fuh, Nikogda tak mnogo ne pisal"
 			_:
 				$UI/TextEdit.text = "COMMAND NOT FOUND"
 

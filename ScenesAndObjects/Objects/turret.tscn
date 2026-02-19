@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://couovwgxhyw6k"]
+
+[ext_resource type="Script" uid="uid://bpwmib8doav21" path="res://turret.gd" id="1_lmsoj"]
+[ext_resource type="Texture2D" uid="uid://cdeewf8ugb4ib" path="res://Images/Turret_base.png" id="2_2tr32"]
+[ext_resource type="Texture2D" uid="uid://b6ib6aqmhr8ml" path="res://Images/Turret_head.png" id="3_t2sl7"]
+[ext_resource type="Texture2D" uid="uid://bf23ccuk0cjsm" path="res://Images/Z.png" id="4_2tr32"]
+[ext_resource type="AudioStream" uid="uid://7vxcacxkpp63" path="res://Sound/SFX/turret_shot.mp3" id="5_t2sl7"]
+[ext_resource type="AudioStream" uid="uid://bq3jql7170tpt" path="res://Sound/SFX/Turret_sounds.mp3" id="6_gkey4"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gkey4"]
+light_mode = 2
+
+[node name="Turret" type="Node2D" unique_id=343732771]
+script = ExtResource("1_lmsoj")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=1141804846]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_gkey4")
+texture = ExtResource("2_2tr32")
+
+[node name="Head" type="Node2D" parent="." unique_id=492386569]
+
+[node name="TurretHead" type="Sprite2D" parent="Head" unique_id=532572457]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_gkey4")
+rotation = -1.5707964
+texture = ExtResource("3_t2sl7")
+
+[node name="Marker2D" type="Marker2D" parent="Head" unique_id=1602003782]
+position = Vector2(24, 0)
+gizmo_extents = 5.0
+
+[node name="Ray" type="RayCast2D" parent="Head" unique_id=146830801]
+target_position = Vector2(500, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="Head" unique_id=1360176194]
+light_mask = 2
+visibility_layer = 2
+color = Color(1, 0, 0, 1)
+energy = 0.3
+shadow_enabled = true
+texture = ExtResource("4_2tr32")
+
+[node name="Ray2" type="RayCast2D" parent="Head" unique_id=587563889]
+target_position = Vector2(492, -78)
+
+[node name="Ray3" type="RayCast2D" parent="Head" unique_id=1233758165]
+target_position = Vector2(492, 78)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1554662806]
+
+[node name="Timer" type="Timer" parent="." unique_id=195186322]
+wait_time = 0.3
+autostart = true
+
+[node name="player_in_zone_timer" type="Timer" parent="." unique_id=711497877]
+one_shot = true
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="." unique_id=1130979376]
+stream = ExtResource("5_t2sl7")
+volume_db = 3.0
+pitch_scale = 0.95
+bus = &"SFX"
+
+[node name="side_changer" type="Timer" parent="." unique_id=234572163]
+wait_time = 3.0
+autostart = true
+
+[node name="shoot2" type="AudioStreamPlayer2D" parent="." unique_id=670278389]
+stream = ExtResource("6_gkey4")
+pitch_scale = 0.59
+bus = &"SFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="player_in_zone_timer" to="." method="_on_player_in_zone_timer_timeout"]
+[connection signal="timeout" from="side_changer" to="." method="_on_side_changer_timeout"]

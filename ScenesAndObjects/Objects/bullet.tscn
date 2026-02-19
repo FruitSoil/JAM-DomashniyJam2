@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c1vyjmuhhmtbs"]
+
+[ext_resource type="Script" uid="uid://cy84gkwvq4b6u" path="res://ScenesAndObjects/Objects/bullet.gd" id="1_8wu0k"]
+[ext_resource type="Texture2D" uid="uid://bjdcahwc2kqfj" path="res://Images/Point_32.png" id="1_s0b7v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wu0k"]
+size = Vector2(21, 6)
+
+[sub_resource type="Curve" id="Curve_rqyr6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.17021275, 0.9810219), 0.0, 0.0, 0, 0, Vector2(0.9326241, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Bullet" type="Area2D" unique_id=1357131187]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_8wu0k")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=47497537]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_8wu0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1647203039]
+modulate = Color(2.3133948, 2.3133948, 0, 1)
+position = Vector2(-3.75, 5.9604645e-08)
+scale = Vector2(1.328125, 0.09375)
+texture = ExtResource("1_s0b7v")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1262316321]
+amount = 16
+gravity = Vector2(0, 0)
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_rqyr6")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=640792921]
+amount = 16
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 13.52
+initial_velocity_max = 27.03
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_rqyr6")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
