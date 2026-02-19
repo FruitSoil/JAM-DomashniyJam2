@@ -73,14 +73,27 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 light_mask = 2
 visibility_layer = 2
 color = Color(0.90771055, 1, 0.7960477, 1)
-energy = 0.15
+energy = 0.1
 blend_mode = 2
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_filter_smooth = 34.6
 shadow_item_cull_mask = 3
 texture = ExtResource("3_j02pm")
-texture_scale = 6.54
+texture_scale = 8.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1108801479]
+light_mask = 2
+visibility_layer = 2
+color = Color(0, 1, 0, 1)
+energy = 0.41
+blend_mode = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter_smooth = 34.6
+shadow_item_cull_mask = 3
+texture = ExtResource("3_j02pm")
+texture_scale = 1.14
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1350530999]
 current = true

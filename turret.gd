@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	if see and charging == false:
+		%Camera.apply_powers(60,10)
 		print("sss")
 		var inst = bullet.instantiate()
 		$"..".add_child(inst)
@@ -33,6 +34,8 @@ func _on_timer_timeout() -> void:
 		inst.rotation = $Head.rotation
 		$Timer.wait_time = randf_range(0.27,0.33)
 		$shoot.play()
+		var twe = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		twe.tween_property($Light, "energy", 0, 0.3).from(1.5)
 	if see and charging == true:
 		$shoot2.play()
 		await get_tree().create_timer(1).timeout

@@ -31,8 +31,9 @@ func add_money(count: int):
 
 func damage():
 	var twm = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-	twm.tween_property($Sprite,"modulate",Color("29ff33"),0.4).from(Color(0.672, 0.0, 0.0, 1.0))
+	twm.tween_property($Sprite,"modulate",Color("29ff33"),0.7).from(Color(0.672, 0.0, 0.0, 1.0))
 	hp -= 1
+	%Camera.apply_powers(30,5)
 	$blood_fast.emitting = true
 	$damage.emitting = true
 	$blood_fast.rotation_degrees = randf_range(0,360)
@@ -51,6 +52,7 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		$"../CanvasLayer/Help_label".visible = true
 		$"../CanvasLayer/Help_label".text = "Press P to exit complex"
 		exit_around = true
+		$"../CanvasLayer/Help_label".add_theme_color_override("font_color",Color("ff6f5d"))
 
 func _on_exit_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
@@ -60,3 +62,27 @@ func _on_exit_body_exited(body: Node2D) -> void:
 
 func lights():
 	$lights.play()
+
+
+func _on_tutorial_body_entered(body: Node2D, value:int) -> void:
+	if body.name == "Player":
+		$"../CanvasLayer/Help_label".visible = true
+		match value:
+			0:
+				$"../CanvasLayer/Help_label".text = "Press LMB/TAB/` to toggle terminal"
+				$"../CanvasLayer/Help_label".add_theme_color_override("font_color",Color("61db00ff"))
+			1:
+				$"../CanvasLayer/Help_label".text = "Open the terminal and enter the number from the floor"
+				$"../CanvasLayer/Help_label".add_theme_color_override("font_color",Color("61db00ff"))
+			2:
+				$"../CanvasLayer/Help_label".text = "You can close the door by entering this code again"
+				$"../CanvasLayer/Help_label".add_theme_color_override("font_color",Color("cd0bc6ff"))
+
+func _on_tutorial_body_exited(body: Node2D, value:int) -> void:
+	if body.name == "Player":
+		$"../CanvasLayer/Help_label".visible = false
+		match value:
+			0:
+				$"../CanvasLayer/Help_label".text = "Press LMB to toggle terminal"
+			1:
+				$"../CanvasLayer/Help_label".text = "Open the terminal and enter the number from the floor."

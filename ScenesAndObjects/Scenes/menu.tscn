@@ -19,6 +19,9 @@ shadow_offset = Vector2(-13.115, -9.275)
 font_size = 32
 font_color = Color(1, 0.654902, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_63urw"]
+font_color = Color(0, 1, 0, 1)
+
 [sub_resource type="Shader" id="Shader_y8tcf"]
 code = "
 /*
@@ -684,15 +687,19 @@ text = "Commands:
 Go down to the аbandoned furniture manufacturing A.K.O.D.Y. offices // Danger: 1
 
   BOTANICAL-GARDEN
+Open cost: 400
 Go down to the experemental botanical garden // Danger: 2
 
   SERVER-COOLING-ROOM
-Go down to the server cooling room with many different types of electronics // Danger: 4
+Open cost: 600
+Go down to the server cooling room with many different types of electronics // Danger: 4 
 
   FLASHLIGHT
 Buy a flashlight // 100
+
   SCANNER
 Buy a scanner that scans an area for loot. // 250
+
   HEADPHONES
 Buy headphones to listen to music and hear your surroundings worse.  // 200"
 label_settings = SubResource("LabelSettings_1qdad")
@@ -719,14 +726,28 @@ texture = ExtResource("2_60gat")
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
-offset_left = 640.0
-offset_top = 64.0
-offset_right = 1248.0
-offset_bottom = -8.0
+offset_left = 672.0
+offset_top = 32.0
+offset_right = 928.0
+offset_bottom = -40.0
 theme_override_font_sizes/font_size = 64
 text = "I.N.K.s: 
   0"
 label_settings = SubResource("LabelSettings_60gat")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Help" type="Label" parent="UI/Control/Variables" unique_id=630967975]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_top = 96.0
+offset_right = 288.0
+offset_bottom = -320.0
+theme_override_font_sizes/font_size = 64
+text = "You can buy something for I.N.K."
+label_settings = SubResource("LabelSettings_63urw")
 autowrap_mode = 3
 
 [node name="Shader" type="ColorRect" parent="UI" unique_id=846891672]
@@ -742,10 +763,10 @@ metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="UI" unique_id=460367496]
 modulate = Color(1, 1, 1, 0.3372549)
-offset_left = 888.395
-offset_top = -111.085
-offset_right = 1888.3953
-offset_bottom = 888.915
+offset_left = 32.000008
+offset_top = -192.0
+offset_right = 1032.0002
+offset_bottom = 808.0
 scale = Vector2(1.045, 1.045)
 texture = ExtResource("3_60gat")
 
@@ -755,10 +776,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -800.0
+offset_left = -1120.0
 offset_top = -72.0
-offset_right = -352.0
-offset_bottom = -40.0
+offset_right = -32.0
+offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/search_result_color = Color(0.10980392, 0.7647059, 0.10980392, 1)
@@ -777,7 +798,7 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxEmpty_y8tcf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1qdad")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_tpnv5")
-placeholder_text = "Enter something"
+placeholder_text = "Enter command"
 
 [node name="Dark" type="ColorRect" parent="UI" unique_id=1742651260]
 visible = false

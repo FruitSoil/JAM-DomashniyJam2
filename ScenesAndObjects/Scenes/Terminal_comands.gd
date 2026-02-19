@@ -10,6 +10,11 @@ func _ready() -> void:
 	$"..".position = Vector2(833.0,614.0)
 
 func _process(delta: float) -> void:
+	if radio:
+		Engine.time_scale = 0.7
+	else:
+		Engine.time_scale = 1.0
+	
 	if Input.is_action_pressed("Down") or Input.is_action_pressed("Up") or Input.is_action_pressed("Right") or Input.is_action_pressed("Left"):
 		moving = true
 	else:
@@ -22,6 +27,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Left") or Input.is_action_just_pressed("Right") or Input.is_action_just_pressed("Up") or Input.is_action_just_pressed("Down"):
 		if radio == true:
+			$"../terminal2".play()
 			text = str("")
 			var twp = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 			twp.tween_property($"..","position",Vector2(833.0,614.0), 1).from(Vector2(833,210))
@@ -30,7 +36,9 @@ func _process(delta: float) -> void:
 			$".".editable = false
 	
 	if Input.is_action_just_released("Radio_toggle"):
+		
 		if radio == true:
+			$"../terminal2".play()
 			text = str("")
 			var twp = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 			twp.tween_property($"..","position",Vector2(833.0,614.0), 1).from(Vector2(833,210))
@@ -38,6 +46,7 @@ func _process(delta: float) -> void:
 			radio = false
 			$".".editable = false
 		elif !moving:
+			$"../terminal".play()
 			text = str("")
 			var twp = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 			twp.tween_property($"..","position",Vector2(833,210), 1).from(Vector2(833.0,614.0))
@@ -60,7 +69,8 @@ func apply_comand(type: int):
 		text = text.substr(0, text.length() - 1)
 	
 	$"../Console".lines_skipped += 1
-	if text == "light" and $"../../../../Player".Shitok_around:
+	text = text.to_upper()
+	if text == "LIGHT" and $"../../../../Player".Shitok_around:
 		get_tree().call_group("togglable_light", "switch_light")
 		$"../../../../Player".lights()
 		blink()

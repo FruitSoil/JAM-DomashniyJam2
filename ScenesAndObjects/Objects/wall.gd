@@ -30,6 +30,7 @@ func number_roll():
 func object_action(given_key: String):
 	if given_key == key:
 		if locked:
+			$Sprite2D2.texture = load("uid://doubxhh346jsy")
 			locked = false
 			$CollisionShape2D.disabled = true
 			var twc = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN)
@@ -39,11 +40,12 @@ func object_action(given_key: String):
 			%Console.lines_skipped += 1
 			$Open.play()
 		else:
+			$Sprite2D2.texture = load("uid://cbfu02h0nci80")
 			locked = true
 			$LightOccluder2D.set_occluder_light_mask(1)
 			$CollisionShape2D.disabled = false
 			var twc = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN)
-			twc.tween_property($PointLight2D, "color", Color(0.672, 0.001, 0.791, 1.0), 0.2)
+			twc.tween_property($PointLight2D, "color", Color(1.0, 0.0, 0.0, 1.0), 0.2)
 			%Console.text = %Console.text + "\n" + "DOOR CLOSE!"
 			%Console.lines_skipped += 1
 			$Close.play()

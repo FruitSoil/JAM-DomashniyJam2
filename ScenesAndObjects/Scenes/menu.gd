@@ -1,9 +1,11 @@
 extends Node2D
 
-
+var s: String
 func _ready() -> void:
 	$AnimationPlayer.play("Starting_animation")
 	$UI/Control/Variables.text = "I.N.K.:\n  " + str(Global.money)
+	if Global.money > 0:
+		$UI/Control/Variables/Help.visible = true
 
 func exit(location: int):
 	match location:
@@ -18,27 +20,37 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("enter"):
 		$UI/TextEdit.text = $UI/TextEdit.text.substr(0, $UI/TextEdit.text.length() - 1)
+		$UI/TextEdit.text = $UI/TextEdit.text.to_upper()
+		print($UI/TextEdit.text)
 		match $UI/TextEdit.text:
 			"OFFICES":
 				$AnimationPlayer.play("End_animation")
 			"BOTANICAL-GARDEN":
-				$UI/TextEdit.text = "NOT AVIABLE RIGHT NOW"
+				$UI/TextEdit.placeholder_text = "NOT AVIABLE RIGHT NOW"
+				$UI/TextEdit.text = ""
 			"SERVER-COOLING-ROOM":
-				$UI/TextEdit.text = "NOT AVIABLE RIGHT NOW"
+				$UI/TextEdit.placeholder_text = "NOT AVIABLE RIGHT NOW"
+				$UI/TextEdit.text = ""
 			"FLASHLIGHT":
-				$UI/TextEdit.text = "NOT IN STORE YET"
+				$UI/TextEdit.placeholder_text = "NOT IN STORE YET"
+				$UI/TextEdit.text = ""
 			"SCANNER":
-				$UI/TextEdit.text = "WIP"
+				$UI/TextEdit.placeholder_text = "W.I.P"
+				$UI/TextEdit.text = ""
 			"HEADPHONES":
-				$UI/TextEdit.text = "NOT IN STORE YET"
+				$UI/TextEdit.placeholder_text = "NOT IN STORE YET"
+				$UI/TextEdit.text = ""
 			"I.N.K.":
 				$UI/TextEdit.text = "Money, if that makes more sense"
 			"A.K.O.D.Y.":
 				$UI/TextEdit.text = "A.K.O.D.Y. - freaks"
 			"crimenoirbloodgodflexfatwinterdrunkwizardchrists.com":
 				$UI/TextEdit.text = "fuh, Nikogda tak mnogo ne pisal"
+			"EXIT":
+				$UI/TextEdit.text = "don't leave pls"
 			_:
-				$UI/TextEdit.text = "COMMAND NOT FOUND"
+				$UI/TextEdit.placeholder_text = "COMMAND NOT FOUND"
+				$UI/TextEdit.text = ""
 
 func _input(event):
 	if event is InputEventKey and event.pressed and not event.is_echo():

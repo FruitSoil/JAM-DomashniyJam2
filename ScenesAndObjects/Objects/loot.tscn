@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://tis77cqj8odv"]
 
-[ext_resource type="Texture2D" uid="uid://bscqure1b5de6" path="res://Images/View.png" id="1_74e6p"]
 [ext_resource type="Script" uid="uid://n0b7gpvdtumg" path="res://ScenesAndObjects/Objects/loot.gd" id="1_hmiyj"]
+[ext_resource type="Texture2D" uid="uid://8j4wwuqksv5r" path="res://Images/loot.png" id="2_hmiyj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hmiyj"]
 radius = 32.0
@@ -13,15 +13,15 @@ light_mode = 2
 script = ExtResource("1_hmiyj")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1521972513]
+scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_hmiyj")
 debug_color = Color(0.5137255, 0.5764706, 0, 0)
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1558530759]
-modulate = Color(1, 1, 0, 1)
+modulate = Color(5.2618666, 5.2618666, 0, 1)
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_hmiyj")
-scale = Vector2(1.3333334, 1.3333334)
-texture = ExtResource("1_74e6p")
+texture = ExtResource("2_hmiyj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
