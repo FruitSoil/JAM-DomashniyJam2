@@ -7,7 +7,7 @@ wet = 0.34
 
 [sub_resource type="AudioEffectNotchFilter" id="AudioEffectNotchFilter_smcmu"]
 resource_name = "NotchFilter"
-resonance = 0.2
+resonance = 0.1
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_smcmu"]
 resource_name = "Reverb"
@@ -20,7 +20,7 @@ wet = 0.1
 
 [sub_resource type="AudioEffectNotchFilter" id="AudioEffectNotchFilter_iu4fb"]
 resource_name = "NotchFilter"
-resonance = 0.2
+resonance = 0.1
 
 [resource]
 bus/1/name = &"Music"

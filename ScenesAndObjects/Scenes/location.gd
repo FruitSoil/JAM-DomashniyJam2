@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	
 	
 	%Ambient_parts.global_position = target.global_position
+	%Ambient_parts2.global_position = target.global_position
 	$Camera.global_position.x = lerpf($Camera.global_position.x,target.global_position.x, 0.03)
 	$Camera.global_position.y = lerpf($Camera.global_position.y,target.global_position.y, 0.03)
 

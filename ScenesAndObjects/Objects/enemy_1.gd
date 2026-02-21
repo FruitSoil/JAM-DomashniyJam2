@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var agent = $Navi as NavigationAgent2D
-const Speed = 80
+@export var Speed = 80
 var agressive:bool = false
 
 func _physics_process(delta: float) -> void:

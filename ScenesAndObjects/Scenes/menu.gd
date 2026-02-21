@@ -2,6 +2,7 @@ extends Node2D
 
 var s: String
 func _ready() -> void:
+	Global.cur_loc = "n"
 	$AnimationPlayer.play("Starting_animation")
 	$UI/Control/Variables.text = "I.N.K.: " + str(Global.money)
 	if Global.money > 0:
@@ -43,11 +44,14 @@ func _process(delta: float) -> void:
 		match $UI/TextEdit.text:
 			"GUIDE":
 				$AnimationPlayer.play("End_animation_2")
+				Global.cur_loc = "guide"
 			"OFFICES":
 				$AnimationPlayer.play("End_animation")
+				Global.cur_loc = "offices"
 			"BOTANICAL-GARDEN":
 				if Global.garden:
 					$AnimationPlayer.play("End_animation_3")
+					Global.cur_loc = "garden"
 				else:
 					if Global.money >= 400:
 						$UI/TextEdit.placeholder_text = "Botanical garden avaiable!"

@@ -37,8 +37,8 @@ polygon = PackedVector2Array(13, 0, 15, 0, 15, 32, 13, 32)
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_3cvny")
-collision_layer = 9
-collision_mask = 9
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_u4w8u")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1139143770]
@@ -136,6 +136,8 @@ pitch_scale = 0.9
 bus = &"SFX"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1513391518]
+collision_layer = 5
+collision_mask = 5
 
 [node name="static" type="CollisionShape2D" parent="StaticBody2D" unique_id=594298027]
 light_mask = 2
@@ -146,6 +148,8 @@ shape = SubResource("RectangleShape2D_u4w8u")
 debug_color = Color(0.9764706, 0, 0.42352942, 0)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1302881803]
+collision_layer = 5
+collision_mask = 5
 
 [node name="static2" type="CollisionShape2D" parent="StaticBody2D2" unique_id=821785999]
 light_mask = 2

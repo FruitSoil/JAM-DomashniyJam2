@@ -7,3 +7,5 @@ var headphones: bool = false
 
 var garden: bool = false
 var servers: bool = false
+
+var cur_loc: String = "n"

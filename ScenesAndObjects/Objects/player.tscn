@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bf23ccuk0cjsm" path="res://Images/Z.png" id="3_j02pm"]
 [ext_resource type="AudioStream" uid="uid://wjquoqukwgj3" path="res://Sound/SFX/Two steps.mp3" id="4_vpjc8"]
 [ext_resource type="AudioStream" uid="uid://c5f06hcfbtq4k" path="res://Sound/Music/Ambient_1.ogg" id="5_04mcm"]
+[ext_resource type="AudioStream" uid="uid://ca12ubk4we4hy" path="res://Sound/Music/Ambient_2.ogg" id="7_ks4xn"]
 [ext_resource type="AudioStream" uid="uid://d4drjmprqbumy" path="res://Sound/SFX/PickUp.wav" id="7_uf0dm"]
 [ext_resource type="AudioStream" uid="uid://csf0bp6yp5ywm" path="res://Sound/SFX/Lights.mp3" id="8_bdr74"]
 [ext_resource type="AudioStream" uid="uid://cj1br3hk1i4rf" path="res://Sound/SFX/Hit_blood.mp3" id="9_eyh5e"]
@@ -121,6 +122,11 @@ bus = &"SFX_long_reverb"
 stream = ExtResource("5_04mcm")
 volume_db = 2.829
 autoplay = true
+bus = &"Music"
+
+[node name="Ambient2" type="AudioStreamPlayer2D" parent="." unique_id=562768247]
+stream = ExtResource("7_ks4xn")
+volume_db = 2.829
 bus = &"Music"
 
 [node name="PickUp" type="AudioStreamPlayer2D" parent="." unique_id=1508196280]

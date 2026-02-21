@@ -8,9 +8,13 @@ var current_money: int = 0
 var scanner_coldown: float = 0
 
 func _ready() -> void:
-	$"../CanvasLayer/Control/Radio/Label".text = "I.N.K.:" + str(current_money)
+	$"../CanvasLayer/Control/Radio/Label".text = "I.N.K.: " + str(current_money) + "/300"
 	$"../CanvasLayer/Shader".material.set("shader_parameter/aberration", 0.0)
 	$"../CanvasLayer/Shader".material.set("shader_parameter/static_noise_intensity",  0.0) 
+	$"../CanvasLayer/Control/Radio/Label".text = "I.N.K.: " + str(current_money) + "/300"
+	if Global.cur_loc == "garden":
+		$Ambient2.play()
+		$Ambient.stop()
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("Left", "Right", "Up", "Down")
@@ -33,7 +37,7 @@ func add_money(count: int):
 	current_money += count
 	$PickUp.play()
 	$"../CanvasLayer/Quota".text = "Quota:\n" + str(current_money) + "/300"
-	$"../CanvasLayer/Control/Radio/Label".text = "I.N.K.: " + str(current_money)
+	$"../CanvasLayer/Control/Radio/Label".text = "I.N.K.: " + str(current_money) + "/300"
 
 func damage():
 	var twm = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
