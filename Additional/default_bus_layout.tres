@@ -5,6 +5,10 @@ resource_name = "Reverb"
 room_size = 0.19
 wet = 0.34
 
+[sub_resource type="AudioEffectNotchFilter" id="AudioEffectNotchFilter_smcmu"]
+resource_name = "NotchFilter"
+resonance = 0.2
+
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_smcmu"]
 resource_name = "Reverb"
 room_size = 1.0
@@ -13,6 +17,10 @@ spread = 0.72
 hipass = 0.42
 dry = 0.8
 wet = 0.1
+
+[sub_resource type="AudioEffectNotchFilter" id="AudioEffectNotchFilter_iu4fb"]
+resource_name = "NotchFilter"
+resonance = 0.2
 
 [resource]
 bus/1/name = &"Music"
@@ -35,6 +43,8 @@ bus/3/volume_db = 0.0
 bus/3/send = &"Master"
 bus/3/effect/0/effect = SubResource("AudioEffectReverb_iu4fb")
 bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectNotchFilter_smcmu")
+bus/3/effect/1/enabled = false
 bus/4/name = &"SFX_long_reverb"
 bus/4/solo = false
 bus/4/mute = false
@@ -43,3 +53,5 @@ bus/4/volume_db = 0.0
 bus/4/send = &"Master"
 bus/4/effect/0/effect = SubResource("AudioEffectReverb_smcmu")
 bus/4/effect/0/enabled = true
+bus/4/effect/1/effect = SubResource("AudioEffectNotchFilter_iu4fb")
+bus/4/effect/1/enabled = false

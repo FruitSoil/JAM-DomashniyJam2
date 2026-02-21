@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://ciud1b205fdys"]
 
-[ext_resource type="Texture2D" uid="uid://c1tc61yt2iqk7" path="res://Images/dasda.png" id="1_5of1m"]
 [ext_resource type="Script" uid="uid://byqbhxlj6hxgo" path="res://ScenesAndObjects/Objects/light_box.gd" id="1_cn3ht"]
-[ext_resource type="Texture2D" uid="uid://djhgvvyd4beoo" path="res://Images/Darkler.png" id="2_bg4ak"]
+[ext_resource type="Texture2D" uid="uid://dxepmjv0syp13" path="res://Images/electric_panel.png" id="3_bg4ak"]
 [ext_resource type="Texture2D" uid="uid://bf23ccuk0cjsm" path="res://Images/Z.png" id="4_hx2pg"]
-[ext_resource type="Texture2D" uid="uid://bjdcahwc2kqfj" path="res://Images/Point_32.png" id="4_yysen"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bg4ak"]
 size = Vector2(32, 64)
@@ -28,16 +26,6 @@ position = Vector2(16, 32)
 shape = SubResource("RectangleShape2D_bg4ak")
 debug_color = Color(0.9843137, 0, 0.34117648, 0)
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=821623080]
-position = Vector2(16, 32)
-scale = Vector2(0.25, 0.5)
-texture = ExtResource("2_bg4ak")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1485742761]
-position = Vector2(16, 32)
-scale = Vector2(0.25, 0.5)
-texture = ExtResource("1_5of1m")
-
 [node name="Area2D" type="Area2D" parent="." unique_id=2090109614]
 
 [node name="Collision" type="CollisionShape2D" parent="Area2D" unique_id=1930959035]
@@ -49,14 +37,8 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 wait_time = 0.5
 autostart = true
 
-[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=845585942]
-modulate = Color(0.17641911, 0.17641908, 0.17641908, 1)
-position = Vector2(23.75, 14.5)
-scale = Vector2(0.453125, 0.46874997)
-texture = ExtResource("4_yysen")
-
 [node name="Light" type="PointLight2D" parent="." unique_id=1119905009]
-position = Vector2(23.5, 14.5)
+position = Vector2(17.000002, 8.999999)
 scale = Vector2(0.17000002, 0.16999999)
 color = Color(0.6666667, 0.003921569, 1, 1)
 energy = 2.41
@@ -70,8 +52,13 @@ energy = 0.3
 texture = ExtResource("4_hx2pg")
 texture_scale = 4.64
 
+[node name="ElectricPanel" type="Sprite2D" parent="." unique_id=581848887]
+position = Vector2(16, 32)
+rotation = 4.712389
+texture = ExtResource("3_bg4ak")
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1273865062]
-position = Vector2(15, 54)
+position = Vector2(9, 50)
 lifetime = 1.5
 emission_shape = 1
 emission_sphere_radius = 5.51

@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 			$"../terminal2".play()
 			text = str("")
 			var twp = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
-			twp.tween_property($"..","position",Vector2(833.0,614.0), 1).from(Vector2(833,210))
+			twp.tween_property($"..","position",Vector2(833.0,614.0), 0.6).from(Vector2(833,210))
 			await get_tree().create_timer(0.05).timeout
 			radio = false
 			$".".editable = false
@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 			$"../terminal2".play()
 			text = str("")
 			var twp = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
-			twp.tween_property($"..","position",Vector2(833.0,614.0), 1).from(Vector2(833,210))
+			twp.tween_property($"..","position",Vector2(833.0,614.0), 0.6).from(Vector2(833,210))
 			await get_tree().create_timer(0.05).timeout
 			radio = false
 			$".".editable = false
@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 			$"../terminal".play()
 			text = str("")
 			var twp = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
-			twp.tween_property($"..","position",Vector2(833,210), 1).from(Vector2(833.0,614.0))
+			twp.tween_property($"..","position",Vector2(833,210), 0.6).from(Vector2(833.0,614.0))
 			$".".editable = true
 			radio = true
 			$".".grab_focus()
@@ -61,7 +61,8 @@ func blink():
 	twm.tween_property($"../../Dark","modulate",Color(1.0, 1.0, 1.0, 0.0), 0.3).from(Color(1.0, 1.0, 1.0, 1.0))
 
 func _on_blink_timeout() -> void:
-	$"../../Blink".start(randf_range(15,120))
+	var timer = ($"../../../../Player".hp * 30) + randf_range(5,30)
+	$"../../Blink".start(timer) 
 	blink()
 
 func apply_comand(type: int):
@@ -70,6 +71,21 @@ func apply_comand(type: int):
 	
 	$"../Console".lines_skipped += 1
 	text = text.to_upper()
+	if text == "HELP":
+		%Console.text = %Console.text + "\n" + "   PORT-LIGHT"
+		%Console.lines_skipped += 1
+		%Console.text = %Console.text + "\n" + "Switch flashlight\n(if has flashlight)"
+		%Console.lines_skipped += 2
+		%Console.text = %Console.text + "\n" + "   CHECK"
+		%Console.lines_skipped += 1
+		%Console.text = %Console.text + "\n" + "Start scan programm\n(if has scanner)"
+		%Console.lines_skipped += 2
+		%Console.text = %Console.text + "\n" + "   TUNE"
+		%Console.lines_skipped += 1
+		%Console.text = %Console.text + "\n" + "Put on/take off headphones\n(if has headphones)"
+		%Console.lines_skipped += 2
+	if text == "PORT-LIGHT" and Global.flashlight:
+		$"../../../../Player".toggle_flash()
 	if text == "LIGHT" and $"../../../../Player".Shitok_around:
 		get_tree().call_group("togglable_light", "switch_light")
 		$"../../../../Player".lights()
@@ -77,6 +93,18 @@ func apply_comand(type: int):
 		%Console.text = %Console.text + "\n" + "LIGHT SWITCHED!"
 		%Console.lines_skipped += 1
 		wait_fo_it()
+	if text == "CHECK" and Global.scanner:
+		if $"../../../../Player".scanner_coldown <= 0:
+			$"../../../../Player".scanner()
+			%Console.text = %Console.text + "\n" + "SCANNING"
+			%Console.lines_skipped += 1
+		else:
+			%Console.text = %Console.text + "\n" + "Cooldown"
+			%Console.lines_skipped += 1
+	if text == "TUNE" and Global.headphones:
+		$"../../../../Player".music_toggle()
+		%Console.text = %Console.text + "\n" + "Headphones sound\nswitched"
+		%Console.lines_skipped += 2
 	for i in keys:
 		if i == text:
 			get_tree().call_group("Interactable", "object_action", i)

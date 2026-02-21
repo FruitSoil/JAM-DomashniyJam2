@@ -34,6 +34,10 @@ Global="*uid://des8a11od10pu"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/Максим/Documents/Godot/JAM-DomashniyJam2/Clips/TERMINAL_clip.avi"
+
 [file_customization]
 
 folder_colors={

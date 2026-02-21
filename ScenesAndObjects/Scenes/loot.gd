@@ -1,7 +1,7 @@
 extends Node2D
 
 var loot = preload("res://ScenesAndObjects/Objects/loot.tscn")
-var loot_count = 15
+var loot_count = 20
 
 func _ready() -> void:
 	var points = $".".get_child_count() -1

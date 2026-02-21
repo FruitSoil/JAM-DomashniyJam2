@@ -4,8 +4,12 @@
 [ext_resource type="Script" uid="uid://c862tdaa3btsa" path="res://ScenesAndObjects/Scenes/menu.gd" id="1_3kggx"]
 [ext_resource type="Texture2D" uid="uid://c7yet6gm6k1f1" path="res://Images/Logo.png" id="2_60gat"]
 [ext_resource type="AudioStream" uid="uid://c5uid61qfbcj" path="res://Sound/SFX/Hello_logo.mp3" id="2_tpnv5"]
+[ext_resource type="Texture2D" uid="uid://8j4wwuqksv5r" path="res://Images/loot.png" id="2_xmecs"]
 [ext_resource type="Texture2D" uid="uid://dh1j1lvod32v8" path="res://Images/Player.png" id="3_60gat"]
+[ext_resource type="Texture2D" uid="uid://bbpjas7kc5c6o" path="res://Images/Icon_unlock.png" id="3_ed6vj"]
+[ext_resource type="Texture2D" uid="uid://r6btteclwlf" path="res://Images/Icon_lock.png" id="4_ntxbs"]
 [ext_resource type="AudioStream" uid="uid://csdubp5p1aigh" path="res://Sound/SFX/Click.mp3" id="5_63urw"]
+[ext_resource type="AudioStream" uid="uid://dawwr87vtg7vx" path="res://Sound/SFX/buy_electronic.mp3" id="7_ntxbs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1qdad"]
 font_color = Color(1.5161187e-06, 0.6532019, 5.7756904e-07, 1)
@@ -17,7 +21,7 @@ shadow_offset = Vector2(-13.115, -9.275)
 
 [sub_resource type="LabelSettings" id="LabelSettings_60gat"]
 font_size = 32
-font_color = Color(1, 0.654902, 0, 1)
+font_color = Color(1, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_63urw"]
 font_color = Color(0, 1, 0, 1)
@@ -389,6 +393,216 @@ tracks/7/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_xmecs"]
+resource_name = "End_animation_2"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Dark:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 4.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Dark:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_63urw")
+}],
+"times": PackedFloat32Array(0.06666666)
+}
+tracks/2/use_blend = true
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.766667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"exit"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/TextureRect:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.8666666),
+"transitions": PackedFloat32Array(1, 0.68302023, 1),
+"update": 0,
+"values": [Vector2(32.000008, -192), Vector2(433.925, -250), Vector2(888.395, -111.085)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/TextureRect:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.033333335, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.10995574287564296]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0666666, 4.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8.0, -80.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UI/Control/TextureRect:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7kthx"]
+resource_name = "End_animation_3"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Dark:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 4.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Dark:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_63urw")
+}],
+"times": PackedFloat32Array(0.06666666)
+}
+tracks/2/use_blend = true
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.766667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [2],
+"method": &"exit"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/TextureRect:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.7333333),
+"transitions": PackedFloat32Array(1, 0.20306297, 0.68302023),
+"update": 0,
+"values": [Vector2(32.000008, -192), Vector2(73.205, -192), Vector2(0, 500)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/TextureRect:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.033333335, 0.8333333, 1.4666667),
+"transitions": PackedFloat32Array(1, 0.1126563, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.16057029118347813]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0666666, 4.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8.0, -80.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UI/Control/TextureRect:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_ed6vj"]
 length = 0.001
 tracks/0/type = "value"
@@ -634,6 +848,8 @@ tracks/7/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xmecs"]
 _data = {
 &"End_animation": SubResource("Animation_60gat"),
+&"End_animation_2": SubResource("Animation_xmecs"),
+&"End_animation_3": SubResource("Animation_7kthx"),
 &"RESET": SubResource("Animation_ed6vj"),
 &"Starting_animation": SubResource("Animation_ntxbs")
 }
@@ -677,34 +893,145 @@ metadata/_edit_lock_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 640.0
+offset_left = 96.0
+offset_top = 88.0
+offset_right = 552.0
 offset_bottom = -40.0
-text = "Commands:
-
-  OFFICES 
+text = "Commands [Complexes]
+    GUIDE
+Go to the tutorial level
+    OFFICES 
 Go down to the аbandoned furniture manufacturing A.K.O.D.Y. offices // Danger: 1
 
-  BOTANICAL-GARDEN
+    BOTANICAL-GARDEN
 Open cost: 400
 Go down to the experemental botanical garden // Danger: 2
 
-  SERVER-COOLING-ROOM
+    SERVER-COOLING-ROOM
 Open cost: 600
-Go down to the server cooling room with many different types of electronics // Danger: 4 
+Go down to the server cooling room with many different types of electronics // Danger: 4 "
+label_settings = SubResource("LabelSettings_1qdad")
+autowrap_mode = 3
 
-  FLASHLIGHT
-Buy a flashlight // 100
+[node name="Label2" type="Label" parent="UI/Control/Label" unique_id=1116428911]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 464.0
+offset_right = 1056.0
+offset_bottom = -136.0
+text = "Commands [Items]
+    FLASHLIGHT
+Buy a flashlight // 150
 
-  SCANNER
+    SCANNER
 Buy a scanner that scans an area for loot. // 250
 
-  HEADPHONES
+    HEADPHONES
 Buy headphones to listen to music and hear your surroundings worse.  // 200"
 label_settings = SubResource("LabelSettings_1qdad")
 autowrap_mode = 3
-metadata/_edit_lock_ = true
+
+[node name="icon_lock7" type="TextureRect" parent="UI/Control/Label" unique_id=738769229]
+modulate = Color(0.0013491001, 7.7864385, 8.763848, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 16.0
+offset_right = 44.0
+offset_bottom = 56.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xmecs")
+
+[node name="icon_lock" type="TextureRect" parent="UI/Control/Label" unique_id=1601853061]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 52.0
+offset_right = 44.0
+offset_bottom = 92.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ed6vj")
+
+[node name="icon_lock2" type="TextureRect" parent="UI/Control/Label" unique_id=717087882]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 148.0
+offset_right = 44.0
+offset_bottom = 188.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ntxbs")
+
+[node name="icon_lock3" type="TextureRect" parent="UI/Control/Label" unique_id=70318100]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 236.0
+offset_right = 44.0
+offset_bottom = 276.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ntxbs")
+
+[node name="icon_lock4" type="TextureRect" parent="UI/Control/Label" unique_id=813594503]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 468.0
+offset_top = 12.0
+offset_right = 508.0
+offset_bottom = 52.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ntxbs")
+
+[node name="icon_lock5" type="TextureRect" parent="UI/Control/Label" unique_id=553870489]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 468.0
+offset_top = 64.0
+offset_right = 508.0
+offset_bottom = 104.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ntxbs")
+
+[node name="icon_lock6" type="TextureRect" parent="UI/Control/Label" unique_id=1221577021]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 468.0
+offset_top = 120.0
+offset_right = 508.0
+offset_bottom = 160.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ntxbs")
+
+[node name="ColorRect" type="ColorRect" parent="UI/Control/Label" unique_id=1679696192]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 240.0
+offset_right = 280.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="UI/Control/Label" unique_id=290218327]
+layout_mode = 0
+offset_top = 260.0
+offset_right = 116.0
+offset_bottom = 272.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="UI/Control/Label" unique_id=415412745]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 296.0
+offset_right = 448.0
+offset_bottom = 312.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="UI/Control/Label" unique_id=62025444]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 276.0
+offset_right = 408.0
+offset_bottom = 292.0
+color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="UI/Control" unique_id=1656592678]
 layout_mode = 1
@@ -726,13 +1053,12 @@ texture = ExtResource("2_60gat")
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
-offset_left = 672.0
-offset_top = 32.0
-offset_right = 928.0
-offset_bottom = -40.0
+offset_left = 96.0
+offset_top = 36.0
+offset_right = 352.0
+offset_bottom = -583.0
 theme_override_font_sizes/font_size = 64
-text = "I.N.K.s: 
-  0"
+text = "I.N.K.s: 0"
 label_settings = SubResource("LabelSettings_60gat")
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -742,9 +1068,9 @@ visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
-offset_top = 96.0
-offset_right = 288.0
-offset_bottom = -320.0
+offset_left = 240.0
+offset_top = -4.0
+offset_right = 528.0
 theme_override_font_sizes/font_size = 64
 text = "You can buy something for I.N.K."
 label_settings = SubResource("LabelSettings_63urw")
@@ -765,7 +1091,7 @@ metadata/_edit_lock_ = true
 modulate = Color(1, 1, 1, 0.3372549)
 offset_left = 32.000008
 offset_top = -192.0
-offset_right = 1032.0002
+offset_right = 1032.0137
 offset_bottom = 808.0
 scale = Vector2(1.045, 1.045)
 texture = ExtResource("3_60gat")
@@ -799,6 +1125,9 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_y8tcf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1qdad")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_tpnv5")
 placeholder_text = "Enter command"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
 
 [node name="Dark" type="ColorRect" parent="UI" unique_id=1742651260]
 visible = false
@@ -819,6 +1148,11 @@ bus = &"Music"
 volume_db = -5.0
 autoplay = true
 bus = &"SFX"
+
+[node name="Buy_sound" type="AudioStreamPlayer" parent="." unique_id=1385545145]
+stream = ExtResource("7_ntxbs")
+volume_db = -5.0
+bus = &"SFX_long_reverb"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1213904194]
 libraries/ = SubResource("AnimationLibrary_xmecs")

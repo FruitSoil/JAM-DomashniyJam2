@@ -7,6 +7,8 @@ func _ready() -> void:
 	$CanvasModulate.visible = true
 
 func _process(delta: float) -> void:
+	if $Player.current_money >= 300:
+		$CanvasLayer/Quota.add_theme_color_override("font_color",Color("00b610ff"))
 	if Input.is_action_pressed("targ_en"):
 		target = $Enemy_1
 	else:
@@ -19,3 +21,14 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	$Player_sprite.global_position = $Player.global_position
+	$Player_sprite/Timer.wait_time = randf_range(0.01, 0.1)
+
+func _pcik() -> void:
+	if $CanvasLayer/Control/Radio/Terminal.placeholder_text == "/":
+		$CanvasLayer/Control/Radio/Terminal.placeholder_text = " "
+	else:
+		$CanvasLayer/Control/Radio/Terminal.placeholder_text = "/"
+
+
+func _on_tutorial_area_exited(area: Area2D, extra_arg_0: int) -> void:
+	pass # Replace with function body.

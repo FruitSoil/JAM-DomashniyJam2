@@ -2,7 +2,7 @@ extends StaticBody2D
 
 var key: String = "door"
 var locked = true
-var numbe: Array = ["X","Z",""]
+var numbe: Array = ["X","C",""]
 @export var lock_lvl = 2
 @export var lock_lock = false
 
@@ -39,6 +39,7 @@ func object_action(given_key: String):
 			%Console.text = %Console.text + "\n" + "DOOR OPEN!"
 			%Console.lines_skipped += 1
 			$Open.play()
+			$Close.play()
 		else:
 			$Sprite2D2.texture = load("uid://cbfu02h0nci80")
 			locked = true

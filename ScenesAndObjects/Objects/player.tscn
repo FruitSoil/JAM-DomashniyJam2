@@ -8,10 +8,18 @@
 [ext_resource type="AudioStream" uid="uid://c5f06hcfbtq4k" path="res://Sound/Music/Ambient_1.ogg" id="5_04mcm"]
 [ext_resource type="AudioStream" uid="uid://d4drjmprqbumy" path="res://Sound/SFX/PickUp.wav" id="7_uf0dm"]
 [ext_resource type="AudioStream" uid="uid://csf0bp6yp5ywm" path="res://Sound/SFX/Lights.mp3" id="8_bdr74"]
+[ext_resource type="AudioStream" uid="uid://cj1br3hk1i4rf" path="res://Sound/SFX/Hit_blood.mp3" id="9_eyh5e"]
+[ext_resource type="AudioStream" uid="uid://dwilk77iok5ux" path="res://Sound/SFX/Flashlight.mp3" id="9_su6f6"]
+[ext_resource type="AudioStream" uid="uid://cubr0q38wxkqh" path="res://Sound/SFX/hitHurt.wav" id="10_b8ibw"]
+[ext_resource type="AudioStream" uid="uid://baujlexdlvcv7" path="res://Sound/Music/Brendan_Kinsella_-_02_-_Bach_-_Aria_Variata_BVW_989_-_Variation_No_2(chosic.com).mp3" id="12_b8ibw"]
+
+[sub_resource type="Curve" id="Curve_11x46"]
+_data = [Vector2(0, 0), 0.0, 41.283398, 0, 0, Vector2(0.04157044, 0.5773287), 3.7097993, 3.7097993, 0, 0, Vector2(1, 0), -0.22381848, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_04mcm"]
 offsets = PackedFloat32Array(0, 0.60330576, 0.9793388)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+colors = PackedColorArray(1, 1, 1, 1, 0.22670749, 0.22670749, 0.22670746, 1, 0, 0, 0, 0)
 
 [sub_resource type="Gradient" id="Gradient_5u8lh"]
 offsets = PackedFloat32Array(0, 0.5041322, 1)
@@ -36,15 +44,20 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.5, 0.9793388)
 colors = PackedColorArray(17.486006, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_eyh5e"]
+radius = 576.0
+
 [node name="Player" type="CharacterBody2D" unique_id=121205512]
 collision_layer = 5
 script = ExtResource("1_j6iwr")
 
 [node name="Blood" type="CPUParticles2D" parent="." unique_id=1717832040]
+modulate = Color(1, 1, 1, 0.6)
 emitting = false
+amount = 48
 texture = ExtResource("2_5u8lh")
-lifetime = 2.74
-explosiveness = 0.58
+lifetime = 15.0
+explosiveness = 0.15
 emission_shape = 1
 emission_sphere_radius = 10.08
 gravity = Vector2(0, 0)
@@ -52,6 +65,7 @@ angle_min = -704.7
 angle_max = 720.0
 scale_amount_min = 0.5
 scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_11x46")
 color = Color(0.9999997, 0.124572285, 0.086494304, 1)
 color_ramp = SubResource("Gradient_04mcm")
 color_initial_ramp = SubResource("Gradient_5u8lh")
@@ -73,7 +87,7 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 light_mask = 2
 visibility_layer = 2
 color = Color(0.90771055, 1, 0.7960477, 1)
-energy = 0.1
+energy = 0.15
 blend_mode = 2
 range_item_cull_mask = 3
 shadow_enabled = true
@@ -100,7 +114,8 @@ current = true
 
 [node name="Steps" type="AudioStreamPlayer2D" parent="." unique_id=683022428]
 stream = ExtResource("4_vpjc8")
-volume_db = -5.0
+volume_db = -2.0
+bus = &"SFX_long_reverb"
 
 [node name="Ambient" type="AudioStreamPlayer2D" parent="." unique_id=6737327]
 stream = ExtResource("5_04mcm")
@@ -118,6 +133,18 @@ volume_db = 10.0
 max_polyphony = 2
 bus = &"SFX"
 
+[node name="dmg" type="AudioStreamPlayer2D" parent="." unique_id=577402458]
+stream = ExtResource("9_eyh5e")
+volume_db = -2.855
+max_polyphony = 2
+bus = &"SFX"
+
+[node name="dmg2" type="AudioStreamPlayer2D" parent="." unique_id=1774206265]
+stream = ExtResource("10_b8ibw")
+volume_db = -2.0
+max_polyphony = 2
+bus = &"UI"
+
 [node name="blood_fast" type="CPUParticles2D" parent="." unique_id=1431930598]
 emitting = false
 lifetime = 0.3
@@ -132,7 +159,8 @@ damping_max = 100.0
 damping_curve = SubResource("Curve_bdr74")
 angle_min = -720.0
 angle_max = 720.0
-scale_amount_max = 2.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_su6f6")
 color = Color(0.7262233, 3.4172833e-06, 5.7756904e-07, 1)
 color_ramp = SubResource("Gradient_11x46")
@@ -168,3 +196,38 @@ emission_sphere_radius = 11.89
 gravity = Vector2(0, 0)
 scale_amount_max = 11.64
 color = Color(0, 1, 0, 1)
+
+[node name="flashlight" type="Node2D" parent="." unique_id=1316573613]
+
+[node name="Light" type="PointLight2D" parent="flashlight" unique_id=653746558]
+enabled = false
+color = Color(1, 0.5710682, 0.50889325, 1)
+energy = 0.3
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("3_j02pm")
+texture_scale = 4.16
+
+[node name="lights" type="AudioStreamPlayer2D" parent="flashlight" unique_id=2112331941]
+stream = ExtResource("9_su6f6")
+volume_db = -8.0
+bus = &"SFX"
+
+[node name="scanner" type="Node2D" parent="." unique_id=1216650365]
+
+[node name="scanner" type="Area2D" parent="scanner" unique_id=1944488974]
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scanner/scanner" unique_id=58375690]
+shape = SubResource("CircleShape2D_eyh5e")
+disabled = true
+debug_color = Color(0.9647059, 0, 1, 0.28235295)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=320041003]
+stream = ExtResource("12_b8ibw")
+volume_db = -20.0
+pitch_scale = 0.7
+max_polyphony = 2
+bus = &"Music"

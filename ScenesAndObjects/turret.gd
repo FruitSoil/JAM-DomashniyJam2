@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 		$Head/PointLight2D.enabled = true
 		var direction_vector = $"../../Player".global_position - global_position
 		var angle_in_radians = direction_vector.angle()
-		$Head.rotation = lerp_angle($Head.rotation, angle_in_radians, 0.04)
+		$Head.rotation = lerp_angle($Head.rotation, angle_in_radians, 0.025)
 	else:
 		match side:
 			1:
@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	if see and charging == false:
-		%Camera.apply_powers(60,10)
+		%Camera.apply_powers(40,10)
 		print("sss")
 		var inst = bullet.instantiate()
 		$"..".add_child(inst)

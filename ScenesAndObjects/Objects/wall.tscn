@@ -13,10 +13,10 @@ light_mode = 2
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_acocj"]
 light_mode = 2
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3cvny"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0o131"]
 polygon = PackedVector2Array(13, 0, 15, 0, 15, 96, 13, 96)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4w8u"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o131"]
 size = Vector2(32, 96)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3cvny"]
@@ -26,6 +26,12 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lstyc"]
 light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4w8u"]
+size = Vector2(32, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3cvny"]
+polygon = PackedVector2Array(13, 0, 15, 0, 15, 32, 13, 32)
 
 [node name="Wall" type="StaticBody2D" unique_id=118284493 groups=["Interactable"]]
 light_mask = 2
@@ -53,14 +59,15 @@ texture = ExtResource("3_0o131")
 centered = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1934913745]
-occluder = SubResource("OccluderPolygon2D_3cvny")
+position = Vector2(2, 0)
+occluder = SubResource("OccluderPolygon2D_0o131")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=948284112]
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_acocj")
 position = Vector2(16, 48)
-shape = SubResource("RectangleShape2D_u4w8u")
+shape = SubResource("RectangleShape2D_0o131")
 debug_color = Color(0.9764706, 0, 0.42352942, 0)
 
 [node name="Number" type="Label" parent="." unique_id=351277002]
@@ -127,3 +134,31 @@ stream = ExtResource("6_fhfed")
 volume_db = -5.0
 pitch_scale = 0.9
 bus = &"SFX"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1513391518]
+
+[node name="static" type="CollisionShape2D" parent="StaticBody2D" unique_id=594298027]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_acocj")
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_u4w8u")
+debug_color = Color(0.9764706, 0, 0.42352942, 0)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1302881803]
+
+[node name="static2" type="CollisionShape2D" parent="StaticBody2D2" unique_id=821785999]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_acocj")
+position = Vector2(16, 80)
+shape = SubResource("RectangleShape2D_u4w8u")
+debug_color = Color(0.9764706, 0, 0.42352942, 0)
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1395270555]
+position = Vector2(2, 0)
+occluder = SubResource("OccluderPolygon2D_3cvny")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="." unique_id=849447534]
+position = Vector2(2, 64)
+occluder = SubResource("OccluderPolygon2D_3cvny")
