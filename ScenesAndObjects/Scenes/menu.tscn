@@ -11,14 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://csdubp5p1aigh" path="res://Sound/SFX/Click.mp3" id="5_63urw"]
 [ext_resource type="AudioStream" uid="uid://dawwr87vtg7vx" path="res://Sound/SFX/buy_electronic.mp3" id="7_ntxbs"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_1qdad"]
-font_color = Color(1.5161187e-06, 0.6532019, 5.7756904e-07, 1)
-outline_size = 2
-outline_color = Color(3.4142752e-07, 0.17446098, 0.0003302732, 1)
-shadow_size = 3
-shadow_color = Color(0, 1, 0, 0.011764706)
-shadow_offset = Vector2(-13.115, -9.275)
-
 [sub_resource type="LabelSettings" id="LabelSettings_60gat"]
 font_size = 32
 font_color = Color(1, 1, 0, 1)
@@ -603,6 +595,111 @@ tracks/7/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_wo7qj"]
+resource_name = "End_animation_4"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Dark:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 4.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Dark:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_63urw")
+}],
+"times": PackedFloat32Array(0.06666666)
+}
+tracks/2/use_blend = true
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.766667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [3],
+"method": &"exit"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/TextureRect:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.8666666),
+"transitions": PackedFloat32Array(1, 0.68302023, 1),
+"update": 0,
+"values": [Vector2(32.000008, -192), Vector2(433.925, -250), Vector2(888.395, -111.085)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/TextureRect:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.033333335, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.10995574287564296]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0666666, 4.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8.0, -80.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UI/Control/TextureRect:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_ed6vj"]
 length = 0.001
 tracks/0/type = "value"
@@ -737,6 +834,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector2(32.000008, -192)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("UI/Control/Label_2:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ntxbs"]
 resource_name = "Starting_animation"
@@ -839,7 +948,33 @@ tracks/7/path = NodePath("UI/Control/Variables:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.13333334, 6.8),
+"times": PackedFloat32Array(0.1333, 6.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(6.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"focus"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("UI/Control/Label_2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.1, 6.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -850,6 +985,7 @@ _data = {
 &"End_animation": SubResource("Animation_60gat"),
 &"End_animation_2": SubResource("Animation_xmecs"),
 &"End_animation_3": SubResource("Animation_7kthx"),
+&"End_animation_4": SubResource("Animation_wo7qj"),
 &"RESET": SubResource("Animation_ed6vj"),
 &"Starting_animation": SubResource("Animation_ntxbs")
 }
@@ -877,7 +1013,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="UI/Control" unique_id=453963397]
 layout_mode = 1
@@ -887,150 +1022,181 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.051970966, 0.051970966, 0.051970936, 1)
-metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="UI/Control" unique_id=1347639824]
+[node name="Label_2" type="RichTextLabel" parent="UI/Control" unique_id=724264409]
 layout_mode = 1
 anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 552.0
+offset_top = 88.0
+offset_right = -52.0
+offset_bottom = -48.0
+bbcode_enabled = true
+text = "[color=green][color=white]Items commands[/color] 
+
+    [color=cyan]FLASHLIGHT[/color]
+Buy a flashlight 
+// Cost:  150
+
+    [color=cyan]SCANNER[/color]
+Buy a scanner that scans an area for loot. 
+// Cost:  250
+
+    [color=cyan]HEADPHONES[/color]
+Buy headphones to listen to music and hear your surroundings worse.  
+// Cost: 200
+
+    [color=cyan]TURRET-HACK[/color]
+Buy a turret hack script that allows you to see its number and disable it temporarily 
+// Cost:  350"
+scroll_active = false
+
+[node name="icon_lock4" type="TextureRect" parent="UI/Control/Label_2" unique_id=813594503]
+modulate = Color(0.8761797, 0.06768269, 0, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 30.0
+offset_right = 50.0
+offset_bottom = 70.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_ntxbs")
+
+[node name="icon_lock5" type="TextureRect" parent="UI/Control/Label_2" unique_id=553870489]
+modulate = Color(0.8761797, 0.06768269, 0, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 90.0
+offset_right = 50.0
+offset_bottom = 130.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_ntxbs")
+
+[node name="icon_lock6" type="TextureRect" parent="UI/Control/Label_2" unique_id=1221577021]
+modulate = Color(0.8761797, 0.06768269, 0, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 150.0
+offset_right = 50.0
+offset_bottom = 190.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_ntxbs")
+
+[node name="icon_lock8" type="TextureRect" parent="UI/Control/Label_2" unique_id=348101355]
+modulate = Color(0.8761797, 0.06768269, 0, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 225.99997
+offset_right = 50.0
+offset_bottom = 266.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_ntxbs")
+
+[node name="Label" type="RichTextLabel" parent="UI/Control" unique_id=36319518]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 96.0
 offset_top = 88.0
-offset_right = 552.0
+offset_right = -600.0
 offset_bottom = -40.0
-text = "Commands [Complexes]
-    GUIDE
+bbcode_enabled = true
+text = "[color=green][color=white]Complexes commands[/color] 
+
+    [color=cyan]GUIDE [/color]
 Go to the tutorial level
-    OFFICES 
-Go down to the аbandoned furniture manufacturing A.K.O.D.Y. offices // Danger: 1
+// Danger: 0
 
-    BOTANICAL-GARDEN
+    [color=cyan]OFFICES [/color]
+Go down to the аbandoned furniture manufacturing A.K.O.D.Y. offices 
+// Danger: 1
+
+    [color=cyan]BOTANICAL-GARDEN [/color]
 Open cost: 400
-Go down to the experemental botanical garden // Danger: 3
+Go down to the experemental botanical garden 
+// Danger: 3
 
-    SERVER-COOLING-ROOM
+    [color=ff3300]DATA-CENTER[/color]
 Open cost: 600
-Go down to the server cooling room with many different types of electronics // Danger: 4 "
-label_settings = SubResource("LabelSettings_1qdad")
-autowrap_mode = 3
-
-[node name="Label2" type="Label" parent="UI/Control/Label" unique_id=1116428911]
-layout_mode = 1
-anchors_preset = -1
-anchor_bottom = 1.0
-offset_left = 464.0
-offset_right = 1056.0
-offset_bottom = -136.0
-text = "Commands [Items]
-    FLASHLIGHT
-Buy a flashlight // 150
-
-    SCANNER
-Buy a scanner that scans an area for loot. // 250
-
-    HEADPHONES
-Buy headphones to listen to music and hear your surroundings worse.  // 200"
-label_settings = SubResource("LabelSettings_1qdad")
-autowrap_mode = 3
+[color=red]!!You need to acquire all the items to go down into this complex!![/color]
+Go down to the server cooling room with many different types of electronics 
+// Danger: 4 
+[/color]"
+scroll_active = false
 
 [node name="icon_lock7" type="TextureRect" parent="UI/Control/Label" unique_id=738769229]
-modulate = Color(0.0013491001, 7.7864385, 8.763848, 1)
+modulate = Color(0, 1, 1, 1)
 layout_mode = 0
-offset_left = 4.0
-offset_top = 16.0
-offset_right = 44.0
-offset_bottom = 56.0
+offset_left = 7.0
+offset_top = 29.0
+offset_right = 39.0
+offset_bottom = 61.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_xmecs")
 
 [node name="icon_lock" type="TextureRect" parent="UI/Control/Label" unique_id=1601853061]
-modulate = Color(0, 1, 0, 1)
-layout_mode = 0
-offset_left = 4.0
-offset_top = 52.0
-offset_right = 44.0
-offset_bottom = 92.0
-scale = Vector2(0.5, 0.5)
+modulate = Color(0, 1, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.72300005
+offset_left = 7.0
+offset_top = 88.0
+offset_right = 47.0
+offset_bottom = -247.96002
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("3_ed6vj")
 
 [node name="icon_lock2" type="TextureRect" parent="UI/Control/Label" unique_id=717087882]
-modulate = Color(0, 1, 0, 1)
+modulate = Color(0.8761797, 0.06768269, 0, 1)
 layout_mode = 0
-offset_left = 4.0
-offset_top = 148.0
-offset_right = 44.0
-offset_bottom = 188.0
-scale = Vector2(0.5, 0.5)
+offset_left = 7.0
+offset_top = 173.0
+offset_right = 47.0
+offset_bottom = 213.0
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_ntxbs")
 
 [node name="icon_lock3" type="TextureRect" parent="UI/Control/Label" unique_id=70318100]
-modulate = Color(0, 1, 0, 1)
+modulate = Color(0.8761797, 0.06768269, 0, 1)
 layout_mode = 0
-offset_left = 4.0
-offset_top = 236.0
-offset_right = 44.0
-offset_bottom = 276.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_ntxbs")
-
-[node name="icon_lock4" type="TextureRect" parent="UI/Control/Label" unique_id=813594503]
-modulate = Color(0, 1, 0, 1)
-layout_mode = 0
-offset_left = 468.0
-offset_top = 12.0
-offset_right = 508.0
-offset_bottom = 52.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_ntxbs")
-
-[node name="icon_lock5" type="TextureRect" parent="UI/Control/Label" unique_id=553870489]
-modulate = Color(0, 1, 0, 1)
-layout_mode = 0
-offset_left = 468.0
-offset_top = 64.0
-offset_right = 508.0
-offset_bottom = 104.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_ntxbs")
-
-[node name="icon_lock6" type="TextureRect" parent="UI/Control/Label" unique_id=1221577021]
-modulate = Color(0, 1, 0, 1)
-layout_mode = 0
-offset_left = 468.0
-offset_top = 120.0
-offset_right = 508.0
-offset_bottom = 160.0
-scale = Vector2(0.5, 0.5)
+offset_left = 7.0
+offset_top = 262.0
+offset_right = 47.0
+offset_bottom = 302.0
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_ntxbs")
 
 [node name="ColorRect" type="ColorRect" parent="UI/Control/Label" unique_id=1679696192]
 layout_mode = 0
-offset_left = -8.0
-offset_top = 240.0
-offset_right = 280.0
-offset_bottom = 256.0
+offset_left = 28.0
+offset_top = 261.0
+offset_right = 316.0
+offset_bottom = 277.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="UI/Control/Label" unique_id=290218327]
 layout_mode = 0
-offset_top = 260.0
-offset_right = 116.0
-offset_bottom = 272.0
+offset_left = 112.0
+offset_top = 353.0
+offset_right = 132.0
+offset_bottom = 369.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="UI/Control/Label" unique_id=415412745]
 layout_mode = 0
-offset_left = -4.0
-offset_top = 296.0
-offset_right = 448.0
-offset_bottom = 312.0
+offset_left = -8.0
+offset_top = 336.0
+offset_right = 408.0
+offset_bottom = 356.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="UI/Control/Label" unique_id=62025444]
 layout_mode = 0
-offset_left = 172.0
-offset_top = 276.0
-offset_right = 408.0
-offset_bottom = 292.0
+offset_left = 124.0
+offset_top = 320.0
+offset_right = 388.0
+offset_bottom = 337.0
 color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="UI/Control" unique_id=1656592678]
@@ -1052,10 +1218,11 @@ texture = ExtResource("2_60gat")
 [node name="Variables" type="Label" parent="UI/Control" unique_id=1385238334]
 layout_mode = 1
 anchors_preset = -1
+anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 96.0
 offset_top = 36.0
-offset_right = 352.0
+offset_right = -800.0
 offset_bottom = -583.0
 theme_override_font_sizes/font_size = 64
 text = "I.N.K.s: 0"
@@ -1085,29 +1252,31 @@ offset_top = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="UI" unique_id=460367496]
 modulate = Color(1, 1, 1, 0.3372549)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 32.000008
 offset_top = -192.0
-offset_right = 1032.0137
-offset_bottom = 808.0
+offset_right = -119.9884
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.045, 1.045)
 texture = ExtResource("3_60gat")
 
 [node name="TextEdit" type="TextEdit" parent="UI" unique_id=945513223]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1120.0
-offset_top = -72.0
+offset_left = 32.0
+offset_top = 576.0
 offset_right = -32.0
 offset_bottom = -8.0
-grow_horizontal = 0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/search_result_color = Color(0.10980392, 0.7647059, 0.10980392, 1)
 theme_override_colors/search_result_border_color = Color(0.10980392, 0.7647059, 0.10980392, 1)
 theme_override_colors/caret_color = Color(0.10980392, 0.7647059, 1, 1)

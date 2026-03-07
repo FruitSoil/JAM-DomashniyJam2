@@ -4,34 +4,39 @@
 [ext_resource type="Texture2D" uid="uid://8j4wwuqksv5r" path="res://Images/loot.png" id="2_hmiyj"]
 [ext_resource type="AudioStream" uid="uid://dawwr87vtg7vx" path="res://Sound/SFX/buy_electronic.mp3" id="3_aoo12"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aoo12"]
+light_mode = 2
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_hmiyj"]
 radius = 32.0
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hmiyj"]
-light_mode = 2
-
 [node name="Loot" type="Area2D" unique_id=486356530]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_aoo12")
 collision_mask = 17
 script = ExtResource("1_hmiyj")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1521972513]
+use_parent_material = true
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_hmiyj")
-debug_color = Color(0.5137255, 0.5764706, 0, 0)
-
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1558530759]
-modulate = Color(5.2618666, 5.2618666, 0, 1)
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_hmiyj")
-texture = ExtResource("2_hmiyj")
+debug_color = Color(0.5294118, 0.5411765, 0.5019608, 0.42352942)
 
 [node name="Scan_sound" type="AudioStreamPlayer2D" parent="." unique_id=1883213931]
+use_parent_material = true
 stream = ExtResource("3_aoo12")
 volume_db = -5.0
 attenuation = 0.26615903
 bus = &"SFX"
 parameters/looping = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1200193724]
+modulate = Color(2.6034334, 2.6034334, 0, 1)
+light_mask = 2
+visibility_layer = 2
+use_parent_material = true
+texture = ExtResource("2_hmiyj")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

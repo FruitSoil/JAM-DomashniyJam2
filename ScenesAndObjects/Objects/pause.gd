@@ -10,3 +10,11 @@ func _process(delta: float) -> void:
 			await get_tree().create_timer(0.1,true).timeout
 			get_tree().paused = true
 			$Label.visible = true
+
+func _on_button_pressed() -> void:
+	$Label/Exit_comfirm.visible = true
+
+func _on_exit_comfirm_confirmed() -> void:
+	$"../Player".current_money = 0
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://ScenesAndObjects/Scenes/menu.tscn")

@@ -3,9 +3,11 @@ extends CharacterBody2D
 @onready var agent = $Navi as NavigationAgent2D
 @export var Speed = 80
 var agressive:bool = false
+var stun:bool = false
 
 func _physics_process(delta: float) -> void:
-	velocity = Speed * to_local(agent.get_next_path_position()).normalized()
+	if stun == false:
+		velocity = Speed * to_local(agent.get_next_path_position()).normalized()
 	move_and_slide()
 
 func _on_timer_timeout() -> void:
@@ -41,10 +43,18 @@ func _on_attack_timer_timeout() -> void:
 func _on_damage_zone_area_entered(area: Area2D) -> void:
 	if area.name == "scanner":
 			$Sprite.material.set_light_mode(1)
-			print("loot_scanned")
-			await get_tree().create_timer(randf_range(0,0.5)).timeout
-			$Scan_sound.play()
+			print("enemy_scanned")
 
 func _on_damage_zone_area_exited(area: Area2D) -> void:
-	$Sprite.material.set_light_mode(2)
-	print("loot_unscanned")
+	if area.name == "scanner":
+		$Sprite.material.set_light_mode(2)
+		print("enemy_unscanned")
+
+func kill():
+	print("Enemy_stunned")
+	velocity = Vector2(0,0)
+	$Stun.start()
+	stun = true
+
+func _on_stun_timeout() -> void:
+	stun = false

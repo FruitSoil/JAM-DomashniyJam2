@@ -19,11 +19,11 @@ func _process(delta: float) -> void:
 		moving = true
 	else:
 		moving = false
-	
-	if Input.is_action_just_released("enter") and radio == true:
-		apply_comand(1)
 	if Input.is_action_just_released("Radio_toggle") and radio == true:
-		apply_comand(2)
+		if Input.is_action_just_released("enter"):
+			apply_comand(1)
+		else:
+			apply_comand(2)
 	
 	if Input.is_action_just_pressed("Left") or Input.is_action_just_pressed("Right") or Input.is_action_just_pressed("Up") or Input.is_action_just_pressed("Down"):
 		if radio == true:
@@ -102,10 +102,10 @@ func apply_comand(type: int):
 			%Console.text = %Console.text + "\n" + "  SCANNING"
 			%Console.lines_skipped += 1
 		elif Global.scanner == false:
-			%Console.text = %Console.text + "\n" + "  Cooldown"
+			%Console.text = %Console.text + "\n" + "  NO SCANNERas"
 			%Console.lines_skipped += 1
 		else:
-			%Console.text = %Console.text + "\n" + "  NO SCANNER"
+			%Console.text = %Console.text + "\n" + "  Cooldown"
 			%Console.lines_skipped += 1
 	if text == "TUNE" and Global.headphones:
 		$"../../../../Player".music_toggle()
@@ -117,7 +117,7 @@ func apply_comand(type: int):
 	for i in keys:
 		if i == text:
 			get_tree().call_group("Interactable", "object_action", i)
-	print(text)
+	print("Player command ",text)
 	%Console.text = %Console.text + "\n" + str(text)
 	text = str("")
 

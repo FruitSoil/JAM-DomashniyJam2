@@ -19,7 +19,7 @@ func number_roll():
 			key = numbe.get(randi_range(0,2)) + str(randi_range(0,8)) + str(randi_range(0,8))
 		3:
 			key = numbe.get(randi_range(0,2)) + str(randi_range(0,8)) + str(randi_range(0,8)) + str(randi_range(0,8))
-	print(key)
+	print("generated wall code:", key)
 	$Number.text = key
 	$Number2.text = key
 	if $"../../CanvasLayer/Control/Radio/Terminal".keys.has(key) == false:

@@ -45,8 +45,8 @@ energy = 2.41
 texture = ExtResource("4_hx2pg")
 
 [node name="Light2" type="PointLight2D" parent="." unique_id=178308793]
-position = Vector2(23.5, 14.5)
-scale = Vector2(0.17000002, 0.16999999)
+position = Vector2(23.5, 29.53)
+scale = Vector2(0.17000002, 0.23478448)
 color = Color(0.6666667, 0.003921569, 1, 1)
 energy = 0.3
 texture = ExtResource("4_hx2pg")

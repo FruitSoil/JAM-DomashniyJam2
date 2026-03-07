@@ -27,11 +27,14 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lstyc"]
 light_mode = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4w8u"]
-size = Vector2(32, 32)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_0o131"]
+points = PackedVector2Array(-16, -16, 0, 0, 16, -16)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_fhfed"]
+points = PackedVector2Array(-16, 16, 0, 0, 16, 16)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3cvny"]
-polygon = PackedVector2Array(13, 0, 15, 0, 15, 32, 13, 32)
+polygon = PackedVector2Array(13, 0, 15, 0, 15, 16, 13, 16)
 
 [node name="Wall" type="StaticBody2D" unique_id=118284493 groups=["Interactable"]]
 light_mask = 2
@@ -42,10 +45,10 @@ collision_mask = 5
 script = ExtResource("1_u4w8u")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1139143770]
-position = Vector2(14, 49)
+position = Vector2(16, 47.999996)
 scale = Vector2(2.21875, 2.3094795)
 color = Color(1, 0, 0, 1)
-energy = 0.4
+energy = 0.23
 texture = ExtResource("3_3cvny")
 texture_scale = 0.8
 
@@ -144,7 +147,7 @@ light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_acocj")
 position = Vector2(16, 16)
-shape = SubResource("RectangleShape2D_u4w8u")
+shape = SubResource("ConvexPolygonShape2D_0o131")
 debug_color = Color(0.9764706, 0, 0.42352942, 0)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1302881803]
@@ -156,7 +159,7 @@ light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_acocj")
 position = Vector2(16, 80)
-shape = SubResource("RectangleShape2D_u4w8u")
+shape = SubResource("ConvexPolygonShape2D_fhfed")
 debug_color = Color(0.9764706, 0, 0.42352942, 0)
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1395270555]
@@ -164,5 +167,5 @@ position = Vector2(2, 0)
 occluder = SubResource("OccluderPolygon2D_3cvny")
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="." unique_id=849447534]
-position = Vector2(2, 64)
+position = Vector2(2, 80)
 occluder = SubResource("OccluderPolygon2D_3cvny")

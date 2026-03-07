@@ -50,6 +50,7 @@ radius = 576.0
 
 [node name="Player" type="CharacterBody2D" unique_id=121205512]
 collision_layer = 5
+motion_mode = 1
 script = ExtResource("1_j6iwr")
 
 [node name="Blood" type="CPUParticles2D" parent="." unique_id=1717832040]
@@ -104,7 +105,6 @@ color = Color(0, 1, 0, 1)
 energy = 0.41
 blend_mode = 2
 range_item_cull_mask = 3
-shadow_enabled = true
 shadow_filter_smooth = 34.6
 shadow_item_cull_mask = 3
 texture = ExtResource("3_j02pm")
@@ -233,7 +233,7 @@ debug_color = Color(0.9647059, 0, 1, 0.28235295)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=320041003]
 stream = ExtResource("12_b8ibw")
-volume_db = -20.0
+volume_db = -10.0
 pitch_scale = 0.7
 max_polyphony = 2
 bus = &"Music"

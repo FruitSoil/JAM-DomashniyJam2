@@ -6,7 +6,7 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	if global_position.distance_to($"../../Player".global_position) > (scale.x * texture_scale * texture.get_width()) /1.7 + 128:
+	if global_position.distance_to($"../../Player".global_position) > (scale.x * texture_scale * texture.get_width()) /2 + 64:
 		visible = false
 	else:
 		visible = visibled

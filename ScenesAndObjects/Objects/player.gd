@@ -29,7 +29,8 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	scanner_coldown -= delta
 	if Input.is_action_just_released("Interact") and exit_around == true and current_money >= 300:
-		Global.money += current_money
+		if Global.cur_loc != "guide":
+			Global.money += current_money
 		current_money = 0
 		get_tree().change_scene_to_file("res://ScenesAndObjects/Scenes/menu.tscn")
 
@@ -90,7 +91,7 @@ func _on_tutorial_body_entered(body: Node2D, value:int) -> void:
 		$"../CanvasLayer/Help_label".visible = true
 		match value:
 			0:
-				$"../CanvasLayer/Help_label".text = "Press LMB/TAB/` to toggle terminal"
+				$"../CanvasLayer/Help_label".text = "Press LMB/TAB/Enter to toggle terminal"
 				$"../CanvasLayer/Help_label".add_theme_color_override("font_color",Color("ffffffff"))
 			1:
 				$"../CanvasLayer/Help_label".text = "Open the terminal and enter the number from the floor"
@@ -134,6 +135,7 @@ func scanner():
 	$scanner/scanner/CollisionShape2D.disabled = true
 
 func music_toggle():
+	$"../CanvasLayer/Control/Radio/terminal2".play()
 	if $Music.playing:
 		print("stop")
 		$Music.stream_paused = true

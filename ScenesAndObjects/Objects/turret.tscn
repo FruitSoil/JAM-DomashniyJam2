@@ -7,11 +7,29 @@
 [ext_resource type="Texture2D" uid="uid://dp5bxvgmsvsxa" path="res://Images/Point_16.png" id="5_8et81"]
 [ext_resource type="AudioStream" uid="uid://7vxcacxkpp63" path="res://Sound/SFX/turret_shot.mp3" id="5_t2sl7"]
 [ext_resource type="AudioStream" uid="uid://bq3jql7170tpt" path="res://Sound/SFX/Turret_sounds.mp3" id="6_gkey4"]
+[ext_resource type="AudioStream" uid="uid://telidb4uhqkh" path="res://Sound/SFX/Tick.mp3" id="8_6pvwk"]
+[ext_resource type="Texture2D" uid="uid://oh00vx7sgkly" path="res://Images/Hack_panel.png" id="9_mwa43"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gkey4"]
 light_mode = 2
 
-[node name="Turret" type="Node2D" unique_id=343732771]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6pvwk"]
+light_mode = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3312a"]
+texture = ExtResource("9_mwa43")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(18.892157, 0, 0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8et81"]
+light_mode = 2
+
+[node name="Turret" type="Node2D" unique_id=343732771 groups=["Interactable"]]
 script = ExtResource("1_lmsoj")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1141804846]
@@ -46,11 +64,11 @@ shadow_enabled = true
 texture = ExtResource("4_2tr32")
 
 [node name="Ray2" type="RayCast2D" parent="Head" unique_id=587563889]
-target_position = Vector2(492, -100)
+target_position = Vector2(492, -300)
 collision_mask = 4
 
 [node name="Ray3" type="RayCast2D" parent="Head" unique_id=1233758165]
-target_position = Vector2(492, 100)
+target_position = Vector2(492, 300)
 collision_mask = 4
 
 [node name="light" type="Sprite2D" parent="Head" unique_id=491455885]
@@ -61,10 +79,19 @@ position = Vector2(9, 3)
 scale = Vector2(0.23666698, 0.23226526)
 texture = ExtResource("5_8et81")
 
+[node name="Hack_light" type="PointLight2D" parent="Head" unique_id=100818642]
+light_mask = 2
+visibility_layer = 2
+color = Color(0.69803923, 0.21176471, 1, 1)
+energy = 0.65
+shadow_enabled = true
+texture = ExtResource("4_2tr32")
+texture_scale = 1.5
+
 [node name="Node2D" type="Node2D" parent="." unique_id=1554662806]
 
 [node name="Timer" type="Timer" parent="." unique_id=195186322]
-wait_time = 0.2
+wait_time = 0.3
 autostart = true
 
 [node name="player_in_zone_timer" type="Timer" parent="." unique_id=711497877]
@@ -78,22 +105,69 @@ autostart = true
 [node name="shoot" type="AudioStreamPlayer2D" parent="." unique_id=1130979376]
 stream = ExtResource("5_t2sl7")
 volume_db = -3.0
-pitch_scale = 0.95
+max_polyphony = 10
 bus = &"SFX_long_reverb"
 
 [node name="shoot2" type="AudioStreamPlayer2D" parent="." unique_id=670278389]
 stream = ExtResource("6_gkey4")
-pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="shoot3" type="AudioStreamPlayer2D" parent="." unique_id=2122408806]
+stream = ExtResource("6_gkey4")
+
+[node name="Hack_sound" type="AudioStreamPlayer2D" parent="." unique_id=789648840]
+stream = ExtResource("8_6pvwk")
 bus = &"SFX"
 
 [node name="Light" type="PointLight2D" parent="." unique_id=266994130]
 light_mask = 2
 visibility_layer = 2
-color = Color(1, 1, 0, 1)
+position = Vector2(1, -3)
+color = Color(1, 1, 0.49803922, 1)
 energy = 0.0
 shadow_enabled = true
 texture = ExtResource("4_2tr32")
-texture_scale = 5.0
+texture_scale = 6.96
+
+[node name="Script" type="Control" parent="." unique_id=1634688769]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_6pvwk")
+use_parent_material = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Script" unique_id=1847937476]
+use_parent_material = true
+layout_mode = 0
+offset_left = -36.0
+offset_top = -33.0
+offset_right = 35.0
+offset_bottom = -15.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_3312a")
+
+[node name="Code" type="Label" parent="Script/Panel" unique_id=330798038 groups=["Interactable"]]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_8et81")
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 6.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(18.892157, 0, 0, 1)
+text = "T23499 "
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="player_in_zone_timer" to="." method="_on_player_in_zone_timer_timeout"]
